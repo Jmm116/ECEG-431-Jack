@@ -1,0 +1,12 @@
+/**
+* Basic Code for running Pokemon Battle
+**/
+class Main {
+    function void main() {
+        var PokemonBattle battle;
+        do PokemonBattle.newInstance();
+        do battle.run();
+        do game.dispose();
+        return;
+    }
+}
