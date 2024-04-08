@@ -106,7 +106,6 @@ class TeamBuilder {
         } else {
             return null;
         }
-
         return pokemon;
     }
 
