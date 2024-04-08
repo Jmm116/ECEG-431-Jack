@@ -1,0 +1,35 @@
+class Damage {
+    field TypeChart typeChart;
+
+    constructor Battle new(TypeChart chart) {
+        let typeChart = chart;
+        return this;
+    }
+    function int calculateDamage(Pokemon attacker, Move move, Pokemon defender) {
+        var int attackStat;
+        var int defenseStat;
+        var int stab = 100;
+        var int typeEffectiveness;
+        // Determine whether the move is physical or special; scale by 100 to account for decimal loss
+        if (move.getCat() = "Physical") {
+            let attackStat = attacker.getAttack() * 100;
+            let defenseStat = defender.getDefense();
+        } else {
+            let attackStat = attacker.getSpAttack() * 100;
+            let defenseStat = defender.getSpDefense();
+        }
+        // Calculate STAB - same type attack bonus
+        if (move.getType() = attacker.getPrimaryType() | move.getType() = attacker.getSecondaryType()) {
+            let stab = 150; 
+        }
+        // Check the type chart
+        let typeEffectiveness = getTypeEffectiveness(move.getType(), defender.getPrimaryType(), defender.getSecondaryType());
+        // Calculate the damage
+        var int damage = (((3360 * attackStat / defenseStat) / 50 + 2) * stab * typeEffectiveness) / 10000;
+        return damage; 
+    }
+    // Sets the new hp from the damage
+    function void applyDamage(Pokemon defender, int damage) {
+        let defender.setCurrentHP(defender.getCurrentHP() - damage);
+    }
+}
