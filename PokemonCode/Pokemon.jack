@@ -1,0 +1,73 @@
+class Pokemon {
+    // Builds the Pokemon
+    field String name;
+    field String primaryType;
+    field String secondaryType; 
+    field int maxHP;
+    field int attack;
+    field int defense;
+    field int spAttack;
+    field int spDefense;
+    field int speed;
+    field Array moves;
+
+    constructor Pokemon new(String pokemonName, String type1, String type2, int hp, int atk, int def, int spAtk, int spDef, int spd, Array pokemonMoves) {
+        let name = pokemonName;
+        let primaryType = type1;
+        let secondaryType = type2; 
+        let maxHP = hp;
+        let attack = atk;
+        let defense = def;
+        let spAttack = spAtk;
+        let spDefense = spDef;
+        let speed = spd;
+        let moves = pokemonMoves;
+        return this;
+    }
+    // Pikachu
+    method String getName() {
+        return name;
+    }
+    // Electric
+    method String getPrimaryType() {
+        return primaryType;
+    }
+    // null (for Pikachu, others could have one)
+    method String getSecondaryType() {
+        return secondaryType;
+    }
+    // The hp will get updated
+    method int getCurrentHP() {
+        return currentHP;
+    }
+    // This updates the hp
+    method void setCurrentHP(int newHP) {
+        let currentHP = newHP;
+    }
+    // These is for physical moves
+    method int getAttack() {
+        return attack;
+    }
+    method int getDefense() {
+        return defense;
+    }
+    // These are for special moves
+    method int getSpAttack() {
+        return spAttack;
+    }
+    method int getSpDefense() {
+        return spDefense;
+    }
+    // This decides turn order, a tie is a 50/50
+    method int getSpeed() {
+        return speed;
+    }
+    // This is the list of moves
+    method Array getMoves() {
+        return moves;
+    }
+    // This gets the moves from the list
+    method Move getMove(int index) {
+        return moves[index];
+    }
+}

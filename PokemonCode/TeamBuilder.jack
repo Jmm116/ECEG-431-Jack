@@ -1,0 +1,174 @@
+class TeamBuilder {
+    // Builds the teams
+    field MoveManager moveManager;
+
+    constructor TeamBuilder new(MoveManager mManager) {
+        let moveManager = mManager;
+        return this;
+    }
+    // All lvl 100, no EVs or IVs
+    function Pokemon createPokemon(String name) {
+        var Array moves;
+        var Pokemon pokemon;
+        // Team Green
+        if (name = "Venusaur") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Energy Ball");
+            let moves[1] = moveManager.getMove("Sludge Bomb");
+            let pokemon = Pokemon.new("Venusaur", "Grass", "Poison", 80, 82, 83, 100, 100, 80, moves);
+        } else if (name = "Golduck") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Surf");
+            let moves[1] = moveManager.getMove("Thunderbolt");
+            let pokemon = Pokemon.new("Golduck", "Water", null, 80, 82, 78, 95, 80, 85, moves);
+        } else if (name = "Flareon") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Flare Blitz");
+            let moves[1] = moveManager.getMove("Earthquake");
+            let pokemon = Pokemon.new("Flareon", "Fire", null, 65, 130, 60, 95, 110, 65, moves);
+        } else if (name = "Machamp") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Brick Break");
+            let moves[1] = moveManager.getMove("Stone Edge");
+            let pokemon = Pokemon.new("Machamp", "Fighting", null, 90, 130, 80, 65, 85, 55, moves);
+        } else if (name = "Jynx") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Ice Beam");
+            let moves[1] = moveManager.getMove("Psychic");
+            let pokemon = Pokemon.new("Jynx", "Ice", "Pychic", 65, 50, 35, 115, 95, 95, moves);
+        } else if (name = "Fearow") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Aerial Ace");
+            let moves[1] = moveManager.getMove("Slash");
+            let pokemon = Pokemon.new("Fearow", "Normal", "Flying", 65, 90, 65, 61, 61, 100, moves);
+        // Team Red
+        } else if (name = "Charizard") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Flamethrower");
+            let moves[1] = moveManager.getMove("Hurricane");
+            let pokemon = Pokemon.new("Charizard", "Fire", "Flying", 78, 84, 78, 109, 85, 100, moves);
+        } else if (name = "Vaporeon") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Surf");
+            let moves[1] = moveManager.getMove("Ice Beam");
+            let pokemon = Pokemon.new("Vaporeon", "Water", null, 130, 65, 60, 110, 95, 65, moves);
+        } else if (name = "Sandslash") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Earthquake");
+            let moves[1] = moveManager.getMove("Brick Break");
+            let pokemon = Pokemon.new("Sandslash", "Ground", null, 75, 100, 110, 45, 55, 65, moves);
+        } else if (name = "Alakazam") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Psychic");
+            let moves[1] = moveManager.getMove("Thunderbolt");
+            let pokemon = Pokemon.new("Alakazam", "Psychic", null, 55, 50, 45, 135, 85, 120, moves);
+        } else if (name = "Persian") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Slash");
+            let moves[1] = moveManager.getMove("Power Gem");
+            let pokemon = Pokemon.new("Persian", "Normal", null, 65, 70, 60, 65, 65, 115, moves);
+        } else if (name = "Victreebel") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Seed Bomb");
+            let moves[1] = moveManager.getMove("Poison Jab");
+            let pokemon = Pokemon.new("Victreebel", "Grass", "Poison", 80, 105, 65, 100, 70, 70, moves);
+        // Team Blue
+        } else if (name = "Blastoise") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Surf");
+            let moves[1] = moveManager.getMove("Brick Break");
+            let pokemon = Pokemon.new("Blastoise", "Water", null, 79, 83, 100, 85, 105, 78, moves);
+        } else if (name = "Arcanine") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Flamethrower");
+            let moves[1] = moveManager.getMove("Thunder Fang");
+            let pokemon = Pokemon.new("Arcanine", "Fire", null, 90, 110, 80, 100, 80, 95, moves);
+        } else if (name = "Exeggutor") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Energy Ball");
+            let moves[1] = moveManager.getMove("Psychic");
+            let pokemon = Pokemon.new("Exeggutor", "Grass", "Psychic", 95, 95, 85, 125, 75, 55, moves);
+        } else if (name = "Nidoking") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Earthquake");
+            let moves[1] = moveManager.getMove("Poison Jab");
+            let pokemon = Pokemon.new("Nidoking", "Poison", "Ground", 81, 102, 77, 85, 75, 85, moves);
+        } else if (name = "Jolteon") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Thunderbolt");
+            let moves[1] = moveManager.getMove("Power Gem");
+            let pokemon = Pokemon.new("Jolteon", "Electric", null, 81, 102, 77, 85, 75, 85, moves);
+        } else if (name = "Pidgeot") {
+            let moves = Array.new(2);
+            let moves[0] = moveManager.getMove("Hurricane");
+            let moves[1] = moveManager.getMove("Swift");
+            let pokemon = Pokemon.new("Pidgeot", "Normal", "Flying", 83, 80, 75, 70, 70, 101, moves);
+        } else {
+            return null;
+        }
+
+        return pokemon;
+    }
+
+    function Array createPlayerTeam(String starter) {
+        var Array playerteam;
+        let playerteam = Array.new(6);
+        // Player's team
+        if (starter = "Venusaur") {
+            let playerteam[0] = createPokemon("Venusaur");
+            let playerteam[1] = createPokemon("Golduck");
+            let playerteam[2] = createPokemon("Flareon");
+            let playerteam[3] = createPokemon("Machamp");
+            let playerteam[4] = createPokemon("Jynx");
+            let playerteam[5] = createPokemon("Fearow");
+        } else if (starter = "Blastoise") {
+            let playerteam[0] = createPokemon("Blastoise");
+            let playerteam[1] = createPokemon("Exeguttor");
+            let playerteam[2] = createPokemon("Arcanine");
+            let playerteam[3] = createPokemon("Nidoking");
+            let playerteam[4] = createPokemon("Jolteon");
+            let playerteam[5] = createPokemon("Pidgeot");
+        } else if (starter = "Charizard") {
+            let playerteam[0] = createPokemon("Charizard");
+            let playerteam[1] = createPokemon("Vaporeon");
+            let playerteam[2] = createPokemon("Victreebel");
+            let playerteam[3] = createPokemon("Alakazam");
+            let playerteam[4] = createPokemon("Persian");
+            let playerteam[5] = createPokemon("Sandslash");
+        } else {
+            return null;
+        }
+        return playerteam;
+    }
+
+    function Array createRivalTeam(String starter) {
+        var Array rivalteam;
+        let rivalteam = Array.new(6);
+        // Rival's team
+        if (starter = "Blastoise") {
+            let rivalteam[0] = createPokemon("Venusaur");
+            let rivalteam[1] = createPokemon("Golduck");
+            let rivalteam[2] = createPokemon("Flareon");
+            let rivalteam[3] = createPokemon("Machamp");
+            let rivalteam[4] = createPokemon("Jynx");
+            let rivalteam[5] = createPokemon("Fearow");
+        } else if (starter = "Charizard") {
+            let rivalteam[0] = createPokemon("Blastoise");
+            let rivalteam[1] = createPokemon("Exeguttor");
+            let rivalteam[2] = createPokemon("Arcanine");
+            let rivalteam[3] = createPokemon("Nidoking");
+            let rivalteam[4] = createPokemon("Jolteon");
+            let rivalteam[5] = createPokemon("Pidgeot");
+        } else if (starter = "Venusaur") {
+            let rivalteam[0] = createPokemon("Charizard");
+            let rivalteam[1] = createPokemon("Vaporeon");
+            let rivalteam[2] = createPokemon("Victreebel");
+            let rivalteam[3] = createPokemon("Alakazam");
+            let rivalteam[4] = createPokemon("Persian");
+            let rivalteam[5] = createPokemon("Sandslash");
+        } else {
+            return null;
+        }
+        return rivalteam;
+    }
+}

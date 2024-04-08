@@ -1,0 +1,24 @@
+class Moves {
+    field String name;
+    field String type;
+    field String cat;
+
+    constructor Moves new(String moveName, String moveType, String moveCat) {
+        let name = moveName;
+        let type = moveType;
+        let cat = moveCat;
+        return this;
+    }    
+    // Move name
+    method String getName() {
+        return name;
+    }
+    // Move type (fire/water/grass/etc.)
+    method String getType() {
+        return type;
+    }
+    // Move category (special/physical)
+    method String getCat() {
+        return cat;
+    }
+}
