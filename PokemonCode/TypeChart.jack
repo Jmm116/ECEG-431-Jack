@@ -8,6 +8,8 @@ class TypeChart {
         // Calculate against the second type, if it exists
         if (defenderType2 != null) {
             let effectiveness = effectiveness * checkTypeMatch(moveType, defenderType2);
+        } else {
+            let effectiveness = effectiveness * 10
         }
         return effectiveness
     }
