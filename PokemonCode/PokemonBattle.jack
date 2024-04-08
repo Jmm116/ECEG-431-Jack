@@ -1,0 +1,9 @@
+class PokemonBattle {
+    field boolean exit;
+    field Starter starter;
+
+    constructor PokemonBattle new() {
+        do Screen.clearScreen();
+    
+    }
+}

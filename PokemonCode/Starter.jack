@@ -1,0 +1,24 @@
+class Starter {
+    field int starter;
+    field boolean exit;
+
+    constructor Starter new() {
+
+        let exit = false;
+    }
+
+    method void selector() {
+        var char key;
+
+        while (~exit) {
+            while ((key = 0) & (~exit)) {
+                let key = Keyboard.keyPressed();
+                do Sys.wait(50);
+            }
+
+            if (key = 1) { let starter = 1 }
+            if (key = 2) { let starter = 2 }
+            if (key = 3) {}
+        }
+    }
+}
