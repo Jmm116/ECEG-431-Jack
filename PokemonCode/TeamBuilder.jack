@@ -1,9 +1,13 @@
 class TeamBuilder {
     // Builds the teams
     field MoveManager moveManager;
+    field int fainted;
+    field array playerTeamObjects;
+    field array playerTeamString;
 
     constructor TeamBuilder new(MoveManager mManager) {
         let moveManager = mManager;
+        let fainted = 0;
         return this;
     }
     // All lvl 100, no EVs or IVs
@@ -109,66 +113,60 @@ class TeamBuilder {
         return pokemon;
     }
 
-    function Array createPlayerTeam(String starter) {
-        var Array playerteam;
-        let playerteam = Array.new(6);
+    function void createPlayerTeam(String starter) {
+        let playerTeamObjects = Array.new(6);
         // Player's team
         if (starter = "Venusaur") {
-            let playerteam[0] = createPokemon("Venusaur");
-            let playerteam[1] = createPokemon("Golduck");
-            let playerteam[2] = createPokemon("Flareon");
-            let playerteam[3] = createPokemon("Machamp");
-            let playerteam[4] = createPokemon("Jynx");
-            let playerteam[5] = createPokemon("Fearow");
+            let playerTeamObjects[0] = createPokemon("Venusaur");
+            let playerTeamObjects[1] = createPokemon("Golduck");
+            let playerTeamObjects[2] = createPokemon("Flareon");
+            let playerTeamObjects[3] = createPokemon("Machamp");
+            let playerTeamObjects[4] = createPokemon("Jynx");
+            let playerTeamObjects[5] = createPokemon("Fearow");
         } else if (starter = "Blastoise") {
-            let playerteam[0] = createPokemon("Blastoise");
-            let playerteam[1] = createPokemon("Exeguttor");
-            let playerteam[2] = createPokemon("Arcanine");
-            let playerteam[3] = createPokemon("Nidoking");
-            let playerteam[4] = createPokemon("Jolteon");
-            let playerteam[5] = createPokemon("Pidgeot");
+            let playerTeamObjects[0] = createPokemon("Blastoise");
+            let playerTeamObjects[1] = createPokemon("Exeguttor");
+            let playerTeamObjects[2] = createPokemon("Arcanine");
+            let playerTeamObjects[3] = createPokemon("Nidoking");
+            let playerTeamObjects[4] = createPokemon("Jolteon");
+            let playerTeamObjects[5] = createPokemon("Pidgeot");
         } else if (starter = "Charizard") {
-            let playerteam[0] = createPokemon("Charizard");
-            let playerteam[1] = createPokemon("Vaporeon");
-            let playerteam[2] = createPokemon("Victreebel");
-            let playerteam[3] = createPokemon("Alakazam");
-            let playerteam[4] = createPokemon("Persian");
-            let playerteam[5] = createPokemon("Sandslash");
+            let playerTeamObjects[0] = createPokemon("Charizard");
+            let playerTeamObjects[1] = createPokemon("Vaporeon");
+            let playerTeamObjects[2] = createPokemon("Victreebel");
+            let playerTeamObjects[3] = createPokemon("Alakazam");
+            let playerTeamObjects[4] = createPokemon("Persian");
+            let playerTeamObjects[5] = createPokemon("Sandslash");
         } else {
-            return null;
         }
-        return playerteam;
     }
 
-    function Array getPlayerTeam(String starter) {
-        var Array playerteam;
-        let playerteam = Array.new(6);
+    function void getPlayerTeam(String starter) {
+        let playerTeamString = Array.new(6);
         // Player's team
         if (starter = "Venusaur") {
-            let playerteam[0] = "Venusaur";
-            let playerteam[1] = "Golduck";
-            let playerteam[2] = "Flareon";
-            let playerteam[3] = "Machamp";
-            let playerteam[4] = "Jynx";
-            let playerteam[5] = "Fearow";
+            let playerTeamString[0] = "Venusaur";
+            let playerTeamString[1] = "Golduck";
+            let playerTeamString[2] = "Flareon";
+            let playerTeamString[3] = "Machamp";
+            let playerTeamString[4] = "Jynx";
+            let playerTeamString[5] = "Fearow";
         } else if (starter = "Blastoise") {
-            let playerteam[0] = "Blastoise";
-            let playerteam[1] = "Exeguttor";
-            let playerteam[2] = "Arcanine";
-            let playerteam[3] = "Nidoking";
-            let playerteam[4] = "Jolteon";
-            let playerteam[5] = "Pidgeot";
+            let playerTeamString[0] = "Blastoise";
+            let playerTeamString[1] = "Exeguttor";
+            let playerTeamString[2] = "Arcanine";
+            let playerTeamString[3] = "Nidoking";
+            let playerTeamString[4] = "Jolteon";
+            let playerTeamString[5] = "Pidgeot";
         } else if (starter = "Charizard") {
-            let playerteam[0] = "Charizard";
-            let playerteam[1] = "Vaporeon";
-            let playerteam[2] = "Victreebel";
-            let playerteam[3] = "Alakazam";
-            let playerteam[4] = "Persian";
-            let playerteam[5] = "Sandslash";
+            let playerTeamString[0] = "Charizard";
+            let playerTeamString[1] = "Vaporeon";
+            let playerTeamString[2] = "Victreebel";
+            let playerTeamString[3] = "Alakazam";
+            let playerTeamString[4] = "Persian";
+            let playerTeamString[5] = "Sandslash";
         } else {
-            return null;
         }
-        return playerteam;
     }
 
     function Array createRivalTeam(String starter) {
