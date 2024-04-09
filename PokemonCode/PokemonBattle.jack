@@ -1,9 +1,16 @@
 class PokemonBattle {
     field boolean exit;
     field Starter starter;
+    field int userHitPoints;
+    field int compHitPoints
+    field boolean exit;
 
     constructor PokemonBattle new() {
         do Screen.clearScreen();
-    
+        let starter = Starter.new();
+        let userHitPoints = 0;
+        let compHitPoints = 0;
+        let exit = false;
+
     }
 }

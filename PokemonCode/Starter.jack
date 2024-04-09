@@ -1,24 +1,18 @@
 class Starter {
-    field int starter;
     field boolean exit;
+    field Cycle cycle;
+    field Array starters;
+    field str starter;
 
     constructor Starter new() {
-
+        let cycle = Cycle.new(starters);
         let exit = false;
+        let starters[0] = Venusaur;
+        let starters[1] = Blastoise;
+        let starters[2] = Charizard;
     }
 
     method void selector() {
-        var char key;
-
-        while (~exit) {
-            while ((key = 0) & (~exit)) {
-                let key = Keyboard.keyPressed();
-                do Sys.wait(50);
-            }
-
-            if (key = 1) { let starter = 1 }
-            if (key = 2) { let starter = 2 }
-            if (key = 3) {}
-        }
+        let pokemon = cycle.cycleThrough();
     }
 }
