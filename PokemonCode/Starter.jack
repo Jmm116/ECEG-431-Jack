@@ -2,17 +2,19 @@ class Starter {
     field boolean exit;
     field Cycle cycle;
     field Array starters;
-    field str starter;
+    field String starter; 
 
     constructor Starter new() {
-        let cycle = Cycle.new(starters);
         let exit = false;
-        let starters[0] = Venusaur;
-        let starters[1] = Blastoise;
-        let starters[2] = Charizard;
+        let starters[0] = "Venusaur";
+        let starters[1] = "Blastoise";
+        let starters[2] = "Charizard";
+        let cycle = Cycle.new(starters, 3);
+
+        let starter = do cycle.cycleThrough();
     }
 
-    method void selector() {
-        let pokemon = cycle.cycleThrough();
+    function String getStarter() {
+        return starter;
     }
 }

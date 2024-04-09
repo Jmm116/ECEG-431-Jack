@@ -4,6 +4,15 @@ class PokemonBattle {
     field int userHitPoints;
     field int compHitPoints
     field boolean exit;
+    field TypeChart typeChart;
+    field TeamBuilder userTeam;
+    field TeamBuilder compTeam;
+    field MoveManager moveManager;
+    field Damage damage;
+    field Rival rival;
+    field SpriteFunctions spriteFnc;
+    field SpriteManager spriteMan;
+    field Pokemon 
 
     constructor PokemonBattle new() {
         do Screen.clearScreen();
@@ -11,6 +20,30 @@ class PokemonBattle {
         let userHitPoints = 0;
         let compHitPoints = 0;
         let exit = false;
+        let typeChart = TypeChart.new();
+        let moveManager = MoveManager.new();
+        let userTeam = TeamBuilder.new(moveManager);
+        let compTeam = TeamBuilder.new(moveManager);
+        let damage = Damage.new(typeChart);
+        let rival = Rival.new(typeChart,damage);
+        let spriteFnc = SpriteFunctions.new();
+        let spriteMan = SpriteManager.new();
 
+        do userTeam.createPlayerTeam(starter.getStarter());
+        do compTeam.createRivalTeam(starter.getStarter());
+    }
+
+    function void newInstance() {
+        let instance = PongGame.new();
+        return;
+    }
+
+    function void battle(TeamBuilder userTeam, TeamBuilder compTeam) {
+        var Cycle usrPokemonSel;
+        let usrPokemonSel = Cycle.cycleThrough(TEMP);
+        var Cycle compPokemonSel;
+        let compPokemonSel = Cycle.cycleThrough(TEMP);
+
+        let pokemon 
     }
 }
