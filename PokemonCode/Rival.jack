@@ -1,0 +1,55 @@
+class Rival {
+    field TypeChart typeChart;
+    field Damage damageCalculator;
+
+    constructor Rival new(TypeChart chart, Damage dmgCalculator) {
+        let typeChart = chart;
+        let damageCalculator = dmgCalculator;
+        return this;
+    }
+    // Pick the next pokemon to send out
+    function Pokemon chooseNextPokemon(Array team, Pokemon opponent) {
+        var int maxScore = 0;
+        var Pokemon nextChoice = null;
+        var int score;
+        var int i;
+
+        for (let i = 0; i < team.length(); i = i + 1) {
+            if (team[i].getCurrentHP() > 0) { 
+                let score = evaluatePokemon(team[i], opponent);
+                if (score > maxScore) {
+                    let maxScore = score;
+                    let nextChoice = team[i];
+                } else if (score == maxScore && nextChoice != null) {
+                    // Use Speed as a tie-breaker
+                    if (team[i].getSpeed() > nextChoice.getSpeed()) {
+                        let nextChoice = team[i];
+                    }
+                }
+            }
+        }
+        return nextChoice;
+    }
+    // Pick the best move
+    function Move chooseBestMove(Pokemon attacker, Pokemon defender) {
+        var Array moves = attacker.getMoves();
+        var Move bestMove = null;
+        var int maxDamage = 0;
+        var int damage;
+        var int i;
+
+        for (let i = 0; i < moves.length(); i = i + 1) {
+            let damage = damageCalculator.calculateDamage(attacker, moves[i], defender);
+            if (damage > maxDamage) {
+                let maxDamage = damage;
+                let bestMove = moves[i];
+            }
+        }
+        return bestMove;
+    }
+    // Evaluate the effectiveness of a Pokemon against the opponent
+    function int evaluatePokemon(Pokemon candidate, Pokemon opponent) {
+        var int effectiveness = typeChart.getTypeEffectiveness(candidate.getPrimaryType(), opponent.getPrimaryType(), opponent.getSecondaryType());
+        return effectiveness / 100;  // Scale down to adjust for the 10x factor used in TypeChart
+    }
+}
