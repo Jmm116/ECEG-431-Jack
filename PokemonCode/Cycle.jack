@@ -1,0 +1,52 @@
+class Cycle {
+
+    field Array items;
+    field char KEY1 = 49;
+    field char KEY2 = 50;
+    field char KEY3 = 51;
+
+    field boolean exit;
+    field int index;
+    field int length;
+
+    constructor Cycle new(Array cycleItems, int cycleLength) {
+        let length = cycleLength+1;
+        let items = Array.new(length); 
+        let i = 0;
+        while (i < length - 1) {
+            let items[i] = cycleItems[i]
+            let i = i + 1
+        }
+        let items[i] = "Back";
+        let exit = false;
+        let index = 0;
+    }
+
+    function String cycleThrough() {
+        var char key;
+        while (~exit) {
+            while ((key = 0) & (~exit)) {
+                let key = Keyboard.keyPressed();
+                do sys.wait(50)
+            }
+            if (key = KEY1) {
+                return select();
+            }
+            if (key = KEY2) {
+                //iterate and wrap around if over end
+                let index = index + 1;
+                if (index = length) {
+                    let index = 0
+                }
+            }
+            if (key = KEY3) {
+                let exit = true;
+            }
+        }
+    }
+
+    function String select() {
+        //return the item at whatever index we're on
+        return items[index];
+    }
+}
