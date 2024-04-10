@@ -1,0 +1,83 @@
+class Pbattle {
+    field Pokemon usrPokemon;
+    field Array usrMoves;
+    field Pokemon cmpPokemon;
+    field Array cmpMoves;
+    field boolean exit;
+    field TypeChart typeChart;
+    field MoveManager moveManager;
+    field SpriteFunctions spriteFnc;
+    field SpriteManager spriteMan;
+    field Damage dmgCalc;
+    field Rival rival;
+
+    constructor Pbattle new() {
+        do Screen.clearScreen();
+        let exit = false;
+
+        let usrMoves = Array.new(2);
+        let usrMoves[0] = moveManager.getMove("Energy Ball");
+        let usrMoves[1] = moveManager.getMove("Sludge Bomb");
+        let usrPokemon = Pokemon.new("Venusaur", "Grass", "Poison", 80, 80, 82, 83, 100, 100, 80, usrMoves);
+        let moves = Array.new(2);
+        let cmpMoves[0] = moveManager.getMove("Surf");
+        let cmpMoves[1] = moveManager.getMove("Brick Break");
+        let cmpPokemon = Pokemon.new("Blastoise", "Water", null, 79, 79, 83, 100, 85, 105, 78, cmpMoves);
+
+        let moveManager = MoveManager.new();
+        let spriteMan = SpriteManager.new();
+        let spriteFnc = SpriteFunctions.new();
+        let typeChart = TypeChart.new();
+        let dmgCalc = Damage.new(TypeChart);
+
+        let rival = Rival.new(typeChart,dmgCalc,cmpPokemon);
+    }
+
+    function void newInstance() {
+        let instance = PongGame.new();
+        return;
+    }
+
+    method void run(){
+        var char key;
+
+        while(~exit){
+            while ((key = 0) & (~exit)) {
+                let key = Keyboard.keyPressed();
+                do Sys.wait(50);
+            }
+
+            if (key = 49){
+                var String move;
+                move = usrPokemon.getMove(1);
+                var int damage;
+                damage = do dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
+                var int usrHp;
+                hp = usrPokemon.getCurrentHP - damage;
+                do usrPokemon.setCurrentHP(hp-damage);
+            }
+
+            if (key = 50){
+                var String move;
+                move = usrPokemon.getMove(1);
+                var int damage;
+                damage = do dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
+                var int cmpHp;
+                cmpHp = cmpPokemon.getCurrentHP - damage;
+                do cmpPokemon.setCurrentHP(cmpHp);
+            }
+
+            var String rMove;
+            rMove = rival.chooseBestMove(cmpPokemon,usrPokemon);
+            var int cmpDamage;
+            cmpDamage = do dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
+            var int usrHp;
+            usrHp = usrPokemon.getCurrentHP - cmpDamage;
+            do usrPokemon.setCurrentHP(usrHp);
+
+            if (key = 140){
+                exit = true;
+            }
+        }
+    }
+}

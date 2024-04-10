@@ -21,7 +21,7 @@ class Rival {
                 if (score > maxScore) {
                     let maxScore = score;
                     let currentPokemon = team[i];
-                } else if (score == maxScore && nextChoice != null) {
+                } else if (score = maxScore & nextChoice != null) {
                     // Use Speed as a tie-breaker
                     if (team[i].getSpeed() > nextChoice.getSpeed()) {
                         let currentPokemon = team[i];
