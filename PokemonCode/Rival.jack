@@ -43,6 +43,35 @@ class Rival {
         return currentPokemon;
     }
 
+    // Pick the best move
+    function Move chooseBestMove(Pokemon attacker, Pokemon defender) {
+        var Array moves;
+        let moves = attacker.getMoves();
+        var Move bestMove;
+        var int maxDamage;
+        let maxDamage = 0;
+        var int damage;
+        var int i;
+        let i = 0;
+        var boolean bool;
+        let bool = true;
+
+        while (bool){
+            let damage = damageCalculator.calculateDamage(attacker, moves[i], defender);
+            if (damage > maxDamage){
+                let maxDamage = damage;
+                let bestMove = moves[i];
+            }
+            let i = i + 1;
+
+            if (i = 2){
+                bool = false;
+            }
+        }
+
+        return bestMove;
+    }
+
     // Evaluate the effectiveness of a Pokemon against the opponent
     method int evaluatePokemon(Pokemon candidate, Pokemon opponent) {
         var int effectiveness;

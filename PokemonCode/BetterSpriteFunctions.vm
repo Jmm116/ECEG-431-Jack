@@ -9365,11 +9365,9 @@ label IF_FALSE17
 push constant 0
 return
 function BetterSpriteFunctions.pokemonClear 2
-push argument 0
-pop pointer 0
 push constant 0
 pop local 0
-push argument 1
+push argument 0
 push constant 6
 call String.new 1
 push constant 80
@@ -9391,7 +9389,7 @@ label IF_TRUE0
 push constant 8623
 pop local 0
 label IF_FALSE0
-push argument 1
+push argument 0
 push constant 5
 call String.new 1
 push constant 82
