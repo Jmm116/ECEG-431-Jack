@@ -12,24 +12,33 @@ class PokemonBattle {
     field Rival rival;
     field SpriteFunctions spriteFnc;
     field SpriteManager spriteMan;
-    field Pokemon 
+    field Pokemon userCurr;
 
     constructor PokemonBattle new() {
         do Screen.clearScreen();
+
+        //prompt the player to select starter
         let starter = Starter.new();
+
         let userHitPoints = 0;
         let compHitPoints = 0;
+
         let exit = false;
+
         let typeChart = TypeChart.new();
-        let moveManager = MoveManager.new();
-        let userTeam = TeamBuilder.new(moveManager);
-        let compTeam = TeamBuilder.new(moveManager);
         let damage = Damage.new(typeChart);
-        let rival = Rival.new(typeChart,damage);
+
+        let moveManager = MoveManager.new();
         let spriteFnc = SpriteFunctions.new();
         let spriteMan = SpriteManager.new();
 
+        let userTeam = TeamBuilder.new(moveManager);
+        let compTeam = TeamBuilder.new(moveManager);
+        
+        let rival = Rival.new(typeChart,damage);
+
         do userTeam.createPlayerTeam(starter.getStarter());
+        let userCurr = userTeam.playerTeamObjects[0];
         do compTeam.createRivalTeam(starter.getStarter());
     }
 
@@ -39,11 +48,71 @@ class PokemonBattle {
     }
 
     function void battle(TeamBuilder userTeam, TeamBuilder compTeam) {
-        var Cycle usrPokemonSel;
-        let usrPokemonSel = Cycle.cycleThrough(TEMP);
-        var Cycle compPokemonSel;
-        let compPokemonSel = Cycle.cycleThrough(TEMP);
+        while (true) {
+            //reload sprites - location 4103 for player, 2902 for rival
+            //check if someone has lost
+            if (userTeam.fainted = 6) {
+                //run lose screen
+                return;
+            }
+            if (compTeam.fainted = 6) {
+                //victory screen
+                return;
+            }
 
-        let pokemon 
+            //user selects
+            var action;
+            let action = actionSelect();
+            if (action = "Attack") {
+                //function for selecting a move to do
+                var Cycle cycle;
+                let cycle = new Cycle(userCurr.moves,2);
+                var choice;
+                let choice = cycle.cycleThrough();
+            }
+            if (action = "Switch") {
+                //function for selecting a pokemon to switch out
+                var Cycle cycle;
+                let cycle = new Cycle(userTeam.playerTeamString,6 - userTeam.fainted);
+                var choice;
+                let choice = cycle.cycleThrough();
+                let userCurr = choice;
+            }     
+            //rival selects
+            //run round
+            //check speed
+            if (userCurr.speed >= rivalCurr.speed) {
+                rivalCurr.takeDamage();
+                if (rivalCurr.curHP > 0) {
+                    userCurr.takeDamage();
+                }
+                
+            }
+            if (userCurr.speed < rivalCurr.speed) {
+                userCurr.takeDamage();
+                if (userCurr.curHP > 0) {
+                    rivalCurr.takeDamage();
+                }
+                else {
+                    var Cycle cycle;
+                    let cycle = new Cycle(userTeam.playerTeamString,6 - userTeam.fainted);
+                    var choice;
+                    let choice = cycle.cycleThrough();
+                    let userCurr = choice;
+                }
+            }
+        }
+    }
+
+    function void actionSelect() {
+        var Array options;
+        var int numOptions;
+        var String selected;
+        let options = Array.new(2);
+        let options[0] = "Attack";
+        let options[1] = "Switch";
+        var cycle;
+        let cycle = new Cycle(options,2);
+        return cycle.cycleThrough();
     }
 }
