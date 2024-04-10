@@ -1,4 +1,8 @@
 class TypeChart {
+
+    constructor TypeChart new() {
+    }
+
     // Type chart calculator - no bug/ghost/fairy/steel/dark/dragon
     function int getTypeEffectiveness(String moveType, String defenderType1, String defenderType2) {
         // Default modifier as an integer

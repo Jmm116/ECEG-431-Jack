@@ -1,16 +1,17 @@
 class Rival {
     field TypeChart typeChart;
     field Damage damageCalculator;
+    field Pokemon currentPokemon;
 
-    constructor Rival new(TypeChart chart, Damage dmgCalculator) {
+    constructor Rival new(TypeChart chart, Damage dmgCalculator, Pokemon currentPokemon) {
         let typeChart = chart;
         let damageCalculator = dmgCalculator;
+        let currentPokemon = null;
         return this;
     }
     // Pick the next pokemon to send out
     function Pokemon chooseNextPokemon(Array team, Pokemon opponent) {
         var int maxScore = 0;
-        var Pokemon nextChoice = null;
         var int score;
         var int i;
 
@@ -19,11 +20,11 @@ class Rival {
                 let score = evaluatePokemon(team[i], opponent);
                 if (score > maxScore) {
                     let maxScore = score;
-                    let nextChoice = team[i];
-                } else if (score == maxScore && nextChoice != null) {
+                    let currentPokemon = team[i];
+                } else if (score = maxScore & nextChoice != null) {
                     // Use Speed as a tie-breaker
                     if (team[i].getSpeed() > nextChoice.getSpeed()) {
-                        let nextChoice = team[i];
+                        let currentPokemon = team[i];
                     }
                 }
             }

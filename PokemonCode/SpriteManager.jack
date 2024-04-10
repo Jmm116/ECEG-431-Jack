@@ -1,4 +1,8 @@
 class SpriteManager {
+
+    constructor SpriteManager new() {
+    }
+
     // Handles the sprite function calling depending on 
     // whether it belongs to the player or rival
     function void drawSprite(String pokemonName, String owner, int location) {
