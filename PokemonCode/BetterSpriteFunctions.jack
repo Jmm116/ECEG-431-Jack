@@ -6,7 +6,7 @@ class BetterSpriteFunctions {
         return this;
     }
 
-    method void drawPlayerMon (String name) {
+    function void drawPlayerMon (String name) {
         var int location;
         var int memAddress;
         let location = 4103;
@@ -722,7 +722,7 @@ class BetterSpriteFunctions {
         }
         return;
     }
-    method void drawRivalMon (String name) {
+    function void drawRivalMon (String name) {
         var int location;
         var int memAddress;
         let location = 2003;
@@ -1439,7 +1439,7 @@ class BetterSpriteFunctions {
         }
         return;
     }
-    method void pokemonClear(String member) {
+    function void pokemonClear(String member) {
         var int location;
         var int memAddress; 
         let location = 0;
