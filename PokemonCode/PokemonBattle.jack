@@ -61,7 +61,7 @@ class PokemonBattle {
             }
 
             //user selects
-            var action;
+            var String action;
             let action = actionSelect();
             if (action = "Attack") {
                 //function for selecting a move to do
@@ -80,18 +80,27 @@ class PokemonBattle {
             }     
             //rival selects
             //run round
+            var int damageToTake;
             //check speed
             if (userCurr.speed >= rivalCurr.speed) {
-                rivalCurr.takeDamage();
+                if (action = "Attack") {
+                    let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
+                    do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)
+                }
                 if (rivalCurr.curHP > 0) {
-                    userCurr.takeDamage();
+                    let damageToTake = damage.calculateDamage(rivalCurr, choice, userCurr);
+                    do userCurr.setCurrentHP(userCurr.getCurrentHP() - damageToTake)
                 }
                 
             }
             if (userCurr.speed < rivalCurr.speed) {
-                userCurr.takeDamage();
-                if (userCurr.curHP > 0) {
-                    rivalCurr.takeDamage();
+                let damageToTake = damage.calculateDamage(rivalCurr, choice, userCurr);
+                do userCurr.setCurrentHP(userCurr.getCurrentHP() - damageToTake)
+                if (userCurr.getCurrentHP > 0) {
+                    if (action = "Attack") {
+                        let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
+                        do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)
+                    }
                 }
                 else {
                     var Cycle cycle;
