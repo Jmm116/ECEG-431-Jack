@@ -1,10 +1,11 @@
 class Damage {
     field TypeChart typeChart;
+    field int damage;
 
-    constructor Battle new(TypeChart chart) {
-        let typeChart = chart;
-        return this;
+    constructor Damage new(TypeChart chart) {
+        let damage = 0;
     }
+
     function int calculateDamage(Pokemon attacker, Move move, Pokemon defender) {
         var int attackStat;
         var int defenseStat;
@@ -25,7 +26,7 @@ class Damage {
         // Check the type chart
         let typeEffectiveness = getTypeEffectiveness(move.getType(), defender.getPrimaryType(), defender.getSecondaryType());
         // Calculate the damage
-        var int damage = (((3360 * attackStat / defenseStat) / 50 + 2) * stab * typeEffectiveness) / 10000;
+        let damage = (((3360 * attackStat / defenseStat) / 50 + 2) * stab * typeEffectiveness) / 10000;
         return damage; 
     }
     // Sets the new hp from the damage
