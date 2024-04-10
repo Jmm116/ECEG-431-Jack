@@ -38,20 +38,27 @@ class MoveManager {
     method Move getMove(String moveName) {
         var boolean i;
         var int x;
+        var string move;
+        var Pokemon temp;
 
         let x = 0;
         let i = true;
 
         while (i){
-            if (allMoves[x].getName() = moveName) {
+            let temp = allMoves[x];
+            let move = temp.getName();
+
+            if (move = moveName) {
                 return allMoves[x];
-            } else if (x = 17) {
+            } 
+            if (x = 17) {
                 let i = false;
             }
             
             let x = x + 1;
         }
+        let temp = allMoves[x];
 
-        return;
+        return temp;
     }
 }
