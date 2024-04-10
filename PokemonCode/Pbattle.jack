@@ -7,7 +7,7 @@ class Pbattle {
     field boolean exit;
     field TypeChart typeChart;
     field MoveManager moveManager;
-    field SpriteFunctions spriteFnc;
+    field BetterSpriteFunctions spriteFnc;
     field SpriteManager spriteMan;
     field Damage dmgCalc;
     field Rival rival;
@@ -27,7 +27,7 @@ class Pbattle {
 
         let moveManager = MoveManager.new();
         let spriteMan = SpriteManager.new();
-        let spriteFnc = SpriteFunctions.new();
+        let spriteFnc = BetterSpriteFunctions.new();
         let typeChart = TypeChart.new();
         let dmgCalc = Damage.new(typeChart);
 
@@ -37,7 +37,7 @@ class Pbattle {
     }
 
     function void newInstance() {
-        let instance = PongGame.new();
+        let instance = Pbattle.new();
         return;
     }
 

@@ -35,22 +35,23 @@ class MoveManager {
         return this;
     }
     // Gets the move
-    function Move getMove(String moveName) {
+    method Move getMove(String moveName) {
         var boolean i;
-        var int ii;
+        var int x;
 
-        let ii = 0;
+        let x = 0;
         let i = true;
-        while (i){
-            if (allMoves[ii].getName() = moveName) {
-                return allMoves[ii];
-            }
-            
-            let ii = ii + 1;
 
-            if (ii = 18){
+        while (i){
+            if (allMoves[x].getName() = moveName) {
+                return allMoves[x];
+            } else if (x = 17) {
                 let i = false;
             }
+            
+            let x = x + 1;
         }
+
+        return;
     }
 }
