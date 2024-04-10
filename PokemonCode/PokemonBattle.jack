@@ -82,6 +82,7 @@ class PokemonBattle {
             var int damageToTake;
             //check speed
             if (userCurr.speed >= rivalCurr.speed) {
+                //TODO CHANGE CHOICE TO BE A MOVE OBJECT INSTEAD OF STRING
                 if (action = "Attack") {
                     let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
                     do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)

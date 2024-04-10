@@ -48,6 +48,7 @@ class Pokemon {
     // Updates the current HP
     method void setCurrentHP(int newHP) {
         let curHP = newHP;
+        return;
     }
     method int getAttack() {
         return attack;

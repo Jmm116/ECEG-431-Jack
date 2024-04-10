@@ -1,0 +1,99 @@
+function Pokemon.new 0
+push constant 11
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push argument 4
+pop this 4
+push argument 5
+pop this 5
+push argument 6
+pop this 6
+push argument 7
+pop this 7
+push argument 8
+pop this 8
+push argument 9
+pop this 9
+push argument 10
+pop this 10
+push pointer 0
+return
+function Pokemon.getName 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Pokemon.getPrimaryType 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Pokemon.getSecondaryType 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Pokemon.getMaxHP 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Pokemon.getCurrentHP 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function Pokemon.setCurrentHP 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 4
+push constant 0
+return
+function Pokemon.getAttack 0
+push argument 0
+pop pointer 0
+push this 5
+return
+function Pokemon.getDefense 0
+push argument 0
+pop pointer 0
+push this 6
+return
+function Pokemon.getSpAttack 0
+push argument 0
+pop pointer 0
+push this 7
+return
+function Pokemon.getSpDefense 0
+push argument 0
+pop pointer 0
+push this 8
+return
+function Pokemon.getSpeed 0
+push argument 0
+pop pointer 0
+push this 9
+return
+function Pokemon.getMoves 0
+push argument 0
+pop pointer 0
+push this 10
+return
+function Pokemon.getMove 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 10
+add
+pop pointer 1
+push that 0
+return
