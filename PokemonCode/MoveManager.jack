@@ -27,8 +27,8 @@ class MoveManager {
         let allMoves[12] = Move.new("Hurricane", "Flying", "Special");
         let allMoves[13] = Move.new("Aerial Ace", "Flying", "Physical");
         // Normal
-        let allMoves[14] = Move.new("Swift", "Normal", "Special")
-        let allMoves[15] = Move.new("Slash", "Normal", "Physical")
+        let allMoves[14] = Move.new("Swift", "Normal", "Special");
+        let allMoves[15] = Move.new("Slash", "Normal", "Physical");
         // Electric
         let allMoves[16] = Move.new("Thunderbolt", "Electric", "Special");
         let allMoves[17] = Move.new("Thunder Fang", "Electric", "Physical");
@@ -36,12 +36,21 @@ class MoveManager {
     }
     // Gets the move
     function Move getMove(String moveName) {
-        var int i;
-        for (let i = 0; i < allMoves.length(); i = i + 1) {
-            if (allMoves[i].getName() = moveName) {
-                return allMoves[i];
+        var boolean i;
+        var int ii;
+
+        let ii = 0;
+        let i = true;
+        while (i){
+            if (allMoves[ii].getName() = moveName) {
+                return allMoves[ii];
+            }
+            
+            let ii = ii + 1;
+
+            if (ii = 18){
+                let i = false;
             }
         }
-        return null; 
     }
 }

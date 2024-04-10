@@ -1,8 +1,8 @@
 function Main.main 1
-call PokemonBattle.newInstance 0
+call Pbattle.newInstance 0
 pop temp 0
 push local 0
-call PokemonBattle.run 1
+call Pbattle.run 1
 pop temp 0
 call game.dispose 0
 pop temp 0
