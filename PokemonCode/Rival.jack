@@ -3,54 +3,63 @@ class Rival {
     field Damage damageCalculator;
     field Pokemon currentPokemon;
 
-    constructor Rival new(TypeChart chart, Damage dmgCalculator, Pokemon currentPokemon) {
+    constructor Rival new(TypeChart chart, Damage dmgCalculator, Pokemon initialPokemon) {
         let typeChart = chart;
         let damageCalculator = dmgCalculator;
-        let currentPokemon = null;
+        let currentPokemon = initialPokemon;
         return this;
     }
+
     // Pick the next pokemon to send out
-    function Pokemon chooseNextPokemon(Array team, Pokemon opponent) {
+    method Pokemon chooseNextPokemon(Array team, Pokemon opponent) {
         var int maxScore = 0;
         var int score;
         var int i;
+        var int length;
 
-        for (let i = 0; i < team.length(); i = i + 1) {
+        let length = team.length(); // Get the length once to avoid multiple calls
+        let i = 0;
+        while (i < length) {
             if (team[i].getCurrentHP() > 0) { 
                 let score = evaluatePokemon(team[i], opponent);
                 if (score > maxScore) {
                     let maxScore = score;
-                    let currentPokemon = team[i];
-                } else if (score = maxScore & nextChoice != null) {
-                    // Use Speed as a tie-breaker
-                    if (team[i].getSpeed() > nextChoice.getSpeed()) {
-                        let currentPokemon = team[i];
+                    let currentPokemon = team[i]; 
+                } else if (score = maxScore & currentPokemon != null) { 
+                    if (team[i].getSpeed() > currentPokemon.getSpeed()) {
+                        let currentPokemon = team[i]; 
                     }
                 }
             }
+            let i = i + 1;
         }
-        return nextChoice;
+        return currentPokemon;
     }
+
     // Pick the best move
-    function Move chooseBestMove(Pokemon attacker, Pokemon defender) {
+    method Move chooseBestMove(Pokemon attacker, Pokemon defender) {
         var Array moves = attacker.getMoves();
         var Move bestMove = null;
         var int maxDamage = 0;
         var int damage;
         var int i;
+        var int length;
 
-        for (let i = 0; i < moves.length(); i = i + 1) {
+        let length = moves.length();
+        let i = 0;
+        while (i < length) {
             let damage = damageCalculator.calculateDamage(attacker, moves[i], defender);
             if (damage > maxDamage) {
                 let maxDamage = damage;
-                let bestMove = moves[i];
+                let bestMove = moves[i]; 
             }
+            let i = i + 1;
         }
         return bestMove;
     }
-    // Evaluate the effectiveness of a Pokemon against the opponent
-    function int evaluatePokemon(Pokemon candidate, Pokemon opponent) {
+
+    method int evaluatePokemon(Pokemon candidate, Pokemon opponent) {
         var int effectiveness = typeChart.getTypeEffectiveness(candidate.getPrimaryType(), opponent.getPrimaryType(), opponent.getSecondaryType());
-        return effectiveness / 100;  // Scale down to adjust for the 10x factor used in TypeChart
+        return effectiveness / 100; 
     }
 }

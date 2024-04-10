@@ -78,7 +78,6 @@ class PokemonBattle {
                 let choice = cycle.cycleThrough();
                 let userCurr = choice;
             }     
-            //rival selects
             //run round
             var int damageToTake;
             //check speed
@@ -87,16 +86,26 @@ class PokemonBattle {
                     let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
                     do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)
                 }
-                if (rivalCurr.curHP > 0) {
-                    let damageToTake = damage.calculateDamage(rivalCurr, choice, userCurr);
+                if (rivalCurr.getCurrentHP() > 0) {
+                    let damageToTake = damage.calculateDamage(rivalCurr, rival.chooseBestMove(), userCurr);
                     do userCurr.setCurrentHP(userCurr.getCurrentHP() - damageToTake)
+                } else {
+                    let rivalCurr = rival.chooseNextPokemon();
+                }
+                if (rivalCurr.getCurrentHP() <= 0) {
+                    var Cycle cycle;
+                    let cycle = new Cycle(userTeam.playerTeamString,6 - userTeam.fainted);
+                    var choice;
+                    let choice = cycle.cycleThrough();
+                    //this needs to be a pokemon object
+                    let userCurr = choice;
                 }
                 
             }
             if (userCurr.speed < rivalCurr.speed) {
-                let damageToTake = damage.calculateDamage(rivalCurr, choice, userCurr);
+                let damageToTake = damage.calculateDamage(rivalCurr, rival.chooseBestMove(), userCurr);
                 do userCurr.setCurrentHP(userCurr.getCurrentHP() - damageToTake)
-                if (userCurr.getCurrentHP > 0) {
+                if (userCurr.getCurrentHP() > 0) {
                     if (action = "Attack") {
                         let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
                         do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)
@@ -108,6 +117,9 @@ class PokemonBattle {
                     var choice;
                     let choice = cycle.cycleThrough();
                     let userCurr = choice;
+                }
+                if (rivalCurr.getCurrentHP() <= 0) {
+                    let rivalCurr = rival.chooseNextPokemon();
                 }
             }
         }
