@@ -3,8 +3,8 @@
 **/
 class Main {
     function void main() {
-        var PokemonBattle battle;
-        do PokemonBattle.newInstance();
+        var Pbattle battle;
+        do Pbattle.newInstance();
         do battle.run();
         do game.dispose();
         return;
