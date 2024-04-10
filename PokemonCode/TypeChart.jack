@@ -12,7 +12,7 @@ class TypeChart {
         // Calculate against the first type
         let effectiveness = (effectiveness * checkTypeMatch(moveType, defenderType1));
         // Calculate against the second type, if it exists
-        if (defenderType2 != null) {
+        if (~(defenderType2 = null)) {
             let effectiveness = effectiveness * checkTypeMatch(moveType, defenderType2);
         } else {
             let effectiveness = effectiveness * 10;
@@ -20,172 +20,161 @@ class TypeChart {
         return effectiveness;
     }
 
-    function int checkTypeMatch(String attackType, String defendType) {
+    method int checkTypeMatch(String attackType, String defendType) {
         // The modifier is an integer which will be scaled back down later
         if (attackType = "Fire") {
             if (defendType = "Fire") {
                 return 5;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 200;
-            } else if (defendType = "Water") {
+            } if (defendType = "Water") {
                 return 5;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 5;
-            } else if (defendType = "Ice") {
+            } if (defendType = "Ice") {
                 return 20;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Water") {
+            } 
+            return 10;
+        } if (attackType = "Water") {
             if (defendType = "Fire") {
                 return 20;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 5;
-            } else if (defendType = "Water") {
+            } if (defendType = "Water") {
                 return 5;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 20;
-            } else if (defendType = "Ground") {
+            } if (defendType = "Ground") {
                 return 20;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Grass") {
+            }  
+            return 10;
+            
+        } if (attackType = "Grass") {
             if (defendType = "Fire") {
                 return 5;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 5;
-            } else if (defendType = "Water") {
+            } if (defendType = "Water") {
                 return 20;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 20;
-            } else if (defendType = "Ground") {
+            } if (defendType = "Ground") {
                 return 20;
-            } else if (defendType = "Poison") {
+            } if (defendType = "Poison") {
                 return 5;
-            } else if (defendType = "Flying") {
+            } if (defendType = "Flying") {
                 return 5;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Rock") {
+            } 
+            return 10;
+            
+        } if (attackType = "Rock") {
             if (defendType = "Fire") {
                 return 20;
-            } else if (defendType = "Ice") {
+            } if (defendType = "Ice") {
                 return 20;
-            } else if (defendType = "Fighting") {
+            } if (defendType = "Fighting") {
                 return 5;
-            } else if (defendType = "Ground") {
+            } if (defendType = "Ground") {
                 return 5;
-            } else if (defendType = "Flying") {
+            } if (defendType = "Flying") {
                 return 20;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Ground") {
+            } 
+            return 10;
+        } if (attackType = "Ground") {
             if (defendType = "Fire") {
                 return 20;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 20;
-            } else if (defendType = "Poison") {
+            } if (defendType = "Poison") {
                 return 20;
-            } else if (defendType = "Electric") {
+            } if (defendType = "Electric") {
                 return 20;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 5;
-            } else if (defendType = "Flying") {
+            } if (defendType = "Flying") {
                 return 0;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Normal") {
+            } 
+            return 10;
+        } if (attackType = "Normal") {
             if (defendType = "Rock") {
                 return 5;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Fighting") {
+            } 
+            return 10;
+        } if (attackType = "Fighting") {
             if (defendType = "Normal") {
                 return 20;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 20;
-            } else if (defendType = "Poison") {
+            } if (defendType = "Poison") {
                 return 5;
-            } else if (defendType = "Ice") {
+            } if (defendType = "Ice") {
                 return 20;
-            } else if (defendType = "Psychic") {
+            } if (defendType = "Psychic") {
                 return 5;
-            } else if (defendType = "Flying") {
+            } if (defendType = "Flying") {
                 return 5;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Flying") {
+            } 
+            return 10;
+        } if (attackType = "Flying") {
             if (defendType = "Fighting") {
                 return 20;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 5;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 20;
-            } else if (defendType = "Electric") {
+            } if (defendType = "Electric") {
                 return 5;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Poison") {
+            } 
+            return 10;
+        } if (attackType = "Poison") {
             if (defendType = "Poison") {
                 return 5;
-            } else if (defendType = "Rock") {
+            } if (defendType = "Rock") {
                 return 5;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 20;
-            } else if (defendType = "Ground") {
+            } if (defendType = "Ground") {
                 return 5;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Electric") {
+            } 
+            return 10;
+        } if (attackType = "Electric") {
             if (defendType = "Flying") {
                 return 20;
-            } else if (defendType = "Water") {
+            } if (defendType = "Water") {
                 return 20;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 5;
-            } else if (defendType = "Electric") {
+            } if (defendType = "Electric") {
                 return 5;
-            } else if (defendType = "Ground") {
+            } if (defendType = "Ground") {
                 return 0;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Psychic") {
+            } 
+            return 10;
+        } if (attackType = "Psychic") {
             if (defendType = "Poison") {
                 return 20;
-            } else if (defendType = "Fighting") {
+            } if (defendType = "Fighting") {
                 return 20;
-            } else if (defendType = "Psychic") {
+            } if (defendType = "Psychic") {
                 return 5;
-            } else {
-                return 10;
-            }
-        } else if (attackType = "Ice") {
+            } 
+            return 10;
+        } if (attackType = "Ice") {
             if (defendType = "Ice") {
                 return 5;
-            } else if (defendType = "Flying") {
+            } if (defendType = "Flying") {
                 return 20;
-            } else if (defendType = "Fire") {
+            } if (defendType = "Fire") {
                 return 5;
-            } else if (defendType = "Water") {
+            } if (defendType = "Water") {
                 return 5;
-            } else if (defendType = "Grass") {
+            } if (defendType = "Grass") {
                 return 20;
-            } else if (defendType = "Ground") {
+            } if (defendType = "Ground") {
                 return 20;
-            } else {
-                return 10;
-            }
-        } else {
+            } 
             return 10;
-        }
+        }  
+        return 10;
     }
 }
