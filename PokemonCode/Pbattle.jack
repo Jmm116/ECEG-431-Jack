@@ -8,7 +8,6 @@ class Pbattle {
     field TypeChart typeChart;
     field MoveManager moveManager;
     field BetterSpriteFunctions spriteFnc;
-    field SpriteManager spriteMan;
     field Damage dmgCalc;
     field Rival rival;
 
@@ -26,12 +25,14 @@ class Pbattle {
         let cmpPokemon = Pokemon.new("Blastoise", "Water", null, 79, 79, 83, 100, 85, 105, 78, cmpMoves);
 
         let moveManager = MoveManager.new();
-        let spriteMan = SpriteManager.new();
         let spriteFnc = BetterSpriteFunctions.new();
         let typeChart = TypeChart.new();
         let dmgCalc = Damage.new(typeChart);
 
         let rival = Rival.new(typeChart,dmgCalc,cmpPokemon);
+
+        do spriteFnc.drawPlayerMon("Venusaur");
+        do spriteFnc.drawRivalMon("Blastoise");
 
         return this;
     }
@@ -74,6 +75,14 @@ class Pbattle {
             let cmpDamage = dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
             let usrHp = usrPokemon.getCurrentHP() - cmpDamage;
             do usrPokemon.setCurrentHP(usrHp);
+
+            if (usrHp = 0) {
+                let exit = true;
+            }
+
+            if (cmpHp = 0) {
+                let exit = true;
+            }
 
             if (key = 140){
                 let exit = true;
