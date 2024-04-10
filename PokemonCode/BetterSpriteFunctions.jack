@@ -1,7 +1,7 @@
 function void drawPlayerMon(String name) {
     var int location;
     var int memAddress;
-    let location = 4103
+    let location = 4103;
     let memAddress = 16384+location;
 
     if (name = "Venusaur") {
@@ -738,7 +738,7 @@ function void drawPlayerMon(String name) {
 function void drawRivalMon(String name) {
     var int location;
     var int memAddress;
-    let location = 2003
+    let location = 2902;
     let memAddress = 16384+location;
 
     if (name = "Venusaur") {
@@ -1478,9 +1478,9 @@ function void pokemonClear(String member) {
 	var int memAddress; 
     let location = 0;
     if (member = "Player") {
-        let location = 8623;
+        let location = 4103;
     } else if (member = "Rival") {
-        let location = 7836;
+        let location = 2902;
     }
 	let memAddress = 16384+location;
 	do Memory.poke(memAddress, 0);
