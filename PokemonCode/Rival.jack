@@ -2,11 +2,16 @@ class Rival {
     field Pokemon currentPokemon;
 
     constructor Rival new(Pokemon initialPokemon) {
+        var String currentName;
         let currentPokemon = initialPokemon;
+        do BetterSpriteFunctions.pokemonClear("Rival");
+        let currentName = currentPokemon.getName();
+        do BetterSpriteFunctions.drawRivalMon(currentName);
         return this;
     }
 
     method Pokemon chooseNextPokemon(Array team, Pokemon opponent) {
+        var String currentName;
         var int maxScore;
         var int score;
         var int i;
@@ -14,6 +19,8 @@ class Rival {
         var int currentHP;
         var int pokemonSpeed;
         var int currentSpeed;
+        do BetterSpriteFunctions.pokemonClear("Rival");
+
         let maxScore = 0;
         let i = 0;
 
@@ -36,6 +43,10 @@ class Rival {
             }
             let i = i + 1;
         }
+        
+        let currentName = currentPokemon.getName();
+        do BetterSpriteFunctions.drawRivalMon(currentName);
+
         return currentPokemon;
     }
 
@@ -85,5 +96,10 @@ class Rival {
 
     method Pokemon getCurrent() {
         return currentPokemon;
+    }
+
+    method void setCurrent(Pokemon new) {
+        let currentPokemon = new;
+        return;
     }
 }
