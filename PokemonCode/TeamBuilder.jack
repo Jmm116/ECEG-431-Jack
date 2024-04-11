@@ -5,8 +5,7 @@ class TeamBuilder {
     field array playerTeamObjects;
     field array playerTeamString;
 
-    constructor TeamBuilder new(MoveManager mManager) {
-        let moveManager = mManager;
+    constructor TeamBuilder new() {
         let fainted = 0;
         return this;
     }
@@ -224,5 +223,9 @@ class TeamBuilder {
             let rivalteam[5] = "Sandslash";
         } 
         return rivalteam;
+    }
+
+    method int fainted() {
+        return fainted;
     }
 }
