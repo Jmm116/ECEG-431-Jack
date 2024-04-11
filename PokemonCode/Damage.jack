@@ -1,16 +1,27 @@
 class Damage {
-    field TypeChart typeChart;
-    field int damage;
-
-    constructor Damage new(TypeChart chart) {
-        let damage = 0;
+    constructor Damage new() {
+        return this;
     }
 
     function int calculateDamage(Pokemon attacker, Move move, Pokemon defender) {
+        var int damage;
         var int attackStat;
         var int defenseStat;
-        var int stab = 100;
+        var int stab;
         var int typeEffectiveness;
+        var String moveType;
+        var String attackerPrimary;
+        var String attackerSecondary;
+        var String defenderPrimary;
+        var String defenderSecondary;
+
+        let moveType = move.getType();
+        let attackerPrimary = attacker.getPrimaryType();
+        let attackerSecondary = attacker.getSecondaryType();
+        let defenderPrimary = defender.getPrimaryType();
+        let defenderSecondary = defender.getSecondaryType();
+
+        let stab = 100;
         // Determine whether the move is physical or special; scale by 100 to account for decimal loss
         if (move.getCat() = "Physical") {
             let attackStat = attacker.getAttack() * 100;
@@ -20,17 +31,23 @@ class Damage {
             let defenseStat = defender.getSpDefense();
         }
         // Calculate STAB - same type attack bonus
-        if (move.getType() = attacker.getPrimaryType() | move.getType() = attacker.getSecondaryType()) {
+        if (moveType = attackerPrimary | moveType = attackerSecondary) {
             let stab = 150; 
         }
         // Check the type chart
-        let typeEffectiveness = getTypeEffectiveness(move.getType(), defender.getPrimaryType(), defender.getSecondaryType());
+
+        let typeEffectiveness = TypeChart.getTypeEffectiveness(moveType, defenderPrimary, defenderSecondary);
         // Calculate the damage
         let damage = (((3360 * attackStat / defenseStat) / 50 + 2) * stab * typeEffectiveness) / 10000;
         return damage; 
     }
     // Sets the new hp from the damage
     function void applyDamage(Pokemon defender, int damage) {
-        let defender.setCurrentHP(defender.getCurrentHP() - damage);
+        var int currentHP;
+        var int damageTaken;
+        let currentHP = defender.getCurrentHP();
+        let damageTaken = defender.getCurrentHP() - damage;
+        do defender.setCurrentHP(damageTaken);
+        return;
     }
 }
