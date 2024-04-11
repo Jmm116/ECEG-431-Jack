@@ -1,6 +1,5 @@
 class Starter {
     field boolean exit;
-    field Cycle cycle;
     field Array starters;
     field String starter; 
 
@@ -9,12 +8,12 @@ class Starter {
         let starters[0] = "Venusaur";
         let starters[1] = "Blastoise";
         let starters[2] = "Charizard";
-        let cycle = Cycle.new(starters, 3);
 
-        let starter = do cycle.cycleThrough();
+        let starter = Cycle.cycleThrough(starters, 3);
+        return this;
     }
 
-    function String getStarter() {
+    method String getStarter() {
         return starter;
     }
 }
