@@ -1,11 +1,7 @@
 class Rival {
-    field TypeChart typeChart;
-    field Damage damageCalculator;
     field Pokemon currentPokemon;
 
-    constructor Rival new(TypeChart chart, Damage dmgCalculator, Pokemon initialPokemon) {
-        let typeChart = chart;
-        let damageCalculator = dmgCalculator;
+    constructor Rival new(Pokemon initialPokemon) {
         let currentPokemon = initialPokemon;
         return this;
     }
@@ -46,18 +42,20 @@ class Rival {
     // Pick the best move
     function Move chooseBestMove(Pokemon attacker, Pokemon defender) {
         var Array moves;
-        let moves = attacker.getMoves();
-        var Move bestMove;
+        var Moves move;
+        var Moves bestMove;
         var int maxDamage;
-        let maxDamage = 0;
+        var boolean bool;
         var int damage;
         var int i;
+        let moves = attacker.getMoves();        
+        let maxDamage = 0;
         let i = 0;
-        var boolean bool;
         let bool = true;
 
         while (bool){
-            let damage = damageCalculator.calculateDamage(attacker, moves[i], defender);
+            let move = moves[i];
+            let damage = damageCalculator.calculateDamage(attacker, move, defender);
             if (damage > maxDamage){
                 let maxDamage = damage;
                 let bestMove = moves[i];
@@ -65,7 +63,7 @@ class Rival {
             let i = i + 1;
 
             if (i = 2){
-                bool = false;
+                let bool = false;
             }
         }
 
@@ -74,8 +72,18 @@ class Rival {
 
     // Evaluate the effectiveness of a Pokemon against the opponent
     method int evaluatePokemon(Pokemon candidate, Pokemon opponent) {
+        var String candPrimary;
+        var String oppPrimary;
+        var String oppSecondary;
         var int effectiveness;
-        let effectiveness = typeChart.getTypeEffectiveness(candidate.getPrimaryType(), opponent.getPrimaryType(), opponent.getSecondaryType());
+        let candPrimary = candidate.getPrimaryType();
+        let oppPrimary = opponent.getPrimaryType();
+        let oppSecondary = opponent.getSecondaryType();
+        let effectiveness = TypeChart.getTypeEffectiveness(candPrimary, oppPrimary, oppSecondary);
         return effectiveness / 100;  // Adjust for the 10x factor used in TypeChart
+    }
+
+    method Pokemon getCurrent() {
+        return currentPokemon;
     }
 }
