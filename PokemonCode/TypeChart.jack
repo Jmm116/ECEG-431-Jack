@@ -5,22 +5,26 @@ class TypeChart {
     }
 
     // Type chart calculator - no bug/ghost/fairy/steel/dark/dragon
-    method int getTypeEffectiveness(String moveType, String defenderType1, String defenderType2) {
+    function int getTypeEffectiveness(String moveType, String defenderType1, String defenderType2) {
+        var int checkPrimary;
+        var int checkSecondary;
         // Default modifier as an integer
         var int effectiveness;
         let effectiveness = 10;        
         // Calculate against the first type
-        let effectiveness = (effectiveness * checkTypeMatch(moveType, defenderType1));
+        let checkPrimary = TypeChart.checkTypeMatch(moveType, defenderType1);
+        let effectiveness = (effectiveness * checkPrimary);
         // Calculate against the second type, if it exists
         if (~(defenderType2 = null)) {
-            let effectiveness = effectiveness * checkTypeMatch(moveType, defenderType2);
+            let checkSecondary = TypeChart.checkTypeMatch(moveType, defenderType2);
+            let effectiveness = effectiveness * checkSecondary;
         } else {
             let effectiveness = effectiveness * 10;
         }
         return effectiveness;
     }
 
-    method int checkTypeMatch(String attackType, String defendType) {
+    function int checkTypeMatch(String attackType, String defendType) {
         // The modifier is an integer which will be scaled back down later
         if (attackType = "Fire") {
             if (defendType = "Fire") {
