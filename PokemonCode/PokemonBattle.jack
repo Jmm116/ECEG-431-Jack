@@ -2,7 +2,7 @@ class PokemonBattle {
     field boolean exit;
     field Starter starter;
     field int userHitPoints;
-    field int compHitPoints
+    field int compHitPoints;
     field boolean exit;
     field TypeChart typeChart;
     field TeamBuilder userTeam;
@@ -15,6 +15,9 @@ class PokemonBattle {
     field Pokemon userCurr;
 
     constructor PokemonBattle new() {
+        var Array playerCurrent;
+        var Array rivalCurrent;
+        var String chosenOne;
         do Screen.clearScreen();
 
         //prompt the player to select starter
@@ -26,115 +29,163 @@ class PokemonBattle {
         let exit = false;
 
         let typeChart = TypeChart.new();
-        let damage = Damage.new(typeChart);
+        let damage = Damage.new();
 
         let moveManager = MoveManager.new();
         let spriteFnc = SpriteFunctions.new();
         let spriteMan = SpriteManager.new();
 
-        let userTeam = TeamBuilder.new(moveManager);
-        let compTeam = TeamBuilder.new(moveManager);
-        
-        let rival = Rival.new(typeChart,damage);
+        let userTeam = TeamBuilder.new();
+        let compTeam = TeamBuilder.new();
 
-        do userTeam.createPlayerTeam(starter.getStarter());
-        let userCurr = userTeam.playerTeamObjects[0];
-        do compTeam.createRivalTeam(starter.getStarter());
+        let chosenOne = starter.getStarter();
+        let playerCurrent = userTeam.createPlayerTeam(chosenOne);
+        let userCurr = playerCurrent[0];
+        let rivalCurrent = compTeam.createRivalTeam(chosenOne);
+        let rivalCurrent = rivalCurrent[0];
+        let rival = Rival.new(rivalCurrent);
+        return this;
     }
 
-    function void newInstance() {
-        let instance = PongGame.new();
-        return;
-    }
+    function void battle(TeamBuilder userTeam, TeamBuilder compTeam, Rival rival) {
+        var Starter starterPokemon;
+        var int playerFainted;
+        var int rivalFainted;
+        var int playerNotFainted;
+        var String action;
+        var int damageToTake;
+        var Pokemon playerCurrent;
+        var Pokemon rivalCurrent;
+        var Array playerTeam;
+        var Array playerMoves;
+        var Moves chosenMove;
+        var String chosenPokemon;
+        var int playerSpeed;
+        var int rivalSpeed;
+        var int damageTemp;
+        var int rivalHP;
+        var int playerHP;
 
-    function void battle(TeamBuilder userTeam, TeamBuilder compTeam) {
+        let starterPokemon = PokemonBattle.getStarter();
+
         while (true) {
             //reload sprites - location 4103 for player, 2902 for rival
             //check if someone has lost
-            if (userTeam.fainted = 6) {
+            let playerFainted = userTeam.fainted();
+            if (playerFainted = 6) {
                 //run lose screen
                 return;
             }
-            if (compTeam.fainted = 6) {
+            let rivalFainted = compTeam.fainted();
+            if (rivalFainted = 6) {
                 //victory screen
                 return;
             }
 
             //user selects
-            var String action;
-            let action = actionSelect();
+            // var String action;  <-- can't be here but now a comment for reference
+            let action = PokemonBattle.actionSelect();
             if (action = "Attack") {
                 //function for selecting a move to do
-                var Cycle cycle;
-                let cycle = new Cycle(userCurr.moves,2);
-                var choice;
-                let choice = cycle.cycleThrough();
+                let playerCurrent = PokemonBattle.getCurrent();
+                let playerMoves = playerCurrent.getMoves();
+                let chosenMove = Cycle.cycleThrough(playerMoves,2);
             }
             if (action = "Switch") {
                 //function for selecting a pokemon to switch out
-                var Cycle cycle;
-                let cycle = new Cycle(userTeam.playerTeamString,6 - userTeam.fainted);
-                var choice;
-                let choice = cycle.cycleThrough();
-                let userCurr = choice;
+                let playerNotFainted = 6 - playerFainted;
+                let playerTeam = userTeam.playerTeamString();
+                let chosenPokemon = Cycle.cycleThrough(playerTeam, playerFainted);
+                do PokemonBattle.setCurrent(chosenPokemon);
             }     
             //run round
-            var int damageToTake;
+            // var int damageToTake;  <-- can't be here but now a comment for reference
             //check speed
-            if (userCurr.speed >= rivalCurr.speed) {
-                //TODO CHANGE CHOICE TO BE A MOVE OBJECT INSTEAD OF STRING
+            let playerCurrent = PokemonBattle.getCurrent();
+            let playerSpeed = playerCurrent.getSpeed();
+            let rivalCurrent = rival.getCurrent();
+            let rivalSpeed = rivalCurrent.getSpeed();
+
+            if (~(playerSpeed < rivalSpeed)) {
                 if (action = "Attack") {
-                    let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
-                    do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)
+                    let damageToTake = Damage.calculateDamage(playerCurrent, chosenMove, rivalCurrent);
+                    let rivalHP = rivalCurrent.getCurrentHP();
+                    let damageTemp = rivalHP - damageToTake;
+                    do rivalCurrent.setCurrentHP(damageTemp);
                 }
-                if (rivalCurr.getCurrentHP() > 0) {
-                    let damageToTake = damage.calculateDamage(rivalCurr, rival.chooseBestMove(), userCurr);
-                    do userCurr.setCurrentHP(userCurr.getCurrentHP() - damageToTake)
+                let rivalHP = rivalCurrent.getCurrentHP();
+                if (rivalHP > 0) {
+                    let chosenMove = rival.chooseBestMove();
+                    let damageToTake = Damage.calculateDamage(rivalCurrent, chosenMove, playerCurrent);
+                    let playerHP = playerCurrent.getCurrentHP();
+                    let damageTemp = playerHP - damageToTake;
+                    do playerCurrent.setCurrentHP(damageTemp);
                 } else {
-                    let rivalCurr = rival.chooseNextPokemon();
+                    let rivalCurrent = rival.chooseNextPokemon();
+                    do rival.setCurrent(rivalCurrent);
                 }
-                if (rivalCurr.getCurrentHP() <= 0) {
-                    var Cycle cycle;
-                    let cycle = new Cycle(userTeam.playerTeamString,6 - userTeam.fainted);
-                    var choice;
-                    let choice = cycle.cycleThrough();
-                    //this needs to be a pokemon object
-                    let userCurr = choice;
-                }
-                
+                let playerHP = playerCurrent.getCurrentHP();
+                if (~(playerHP > 0)) {
+                    let playerNotFainted = 6 - playerFainted;
+                    let playerTeam = userTeam.playerTeamString();
+                    let chosenPokemon = Cycle.cycleThrough(playerTeam, playerFainted);
+                    do PokemonBattle.setCurrent(chosenPokemon);
+                }                
             }
-            if (userCurr.speed < rivalCurr.speed) {
-                let damageToTake = damage.calculateDamage(rivalCurr, rival.chooseBestMove(), userCurr);
-                do userCurr.setCurrentHP(userCurr.getCurrentHP() - damageToTake)
-                if (userCurr.getCurrentHP() > 0) {
+            if (playerSpeed < rivalSpeed) {
+                let chosenMove = rival.chooseBestMove(rivalCurrent, playerCurrent);
+                let damageToTake = damage.calculateDamage(rivalCurrent, chosenMove, playerCurrent);
+                let playerHP = playerCurrent.getCurrentHP();
+                let damageTemp = playerHP - damageToTake;
+                do playerCurrent.setCurrentHP(damageTemp);
+                let playerHP = playerCurrent.getCurrentHP();
+                if (playerHP > 0) {
                     if (action = "Attack") {
-                        let damageToTake = damage.calculateDamage(userCurr, choice, rivalCurr);
-                        do rivalCurr.setCurrentHP(rivalCurr.getCurrentHP() - damageToTake)
+                        let damageToTake = Damage.calculateDamage(playerCurrent, chosenMove, rivalCurrent);
+                        let rivalHP = rivalCurrent.getCurrentHP();
+                        let damageTemp = rivalHP - damageToTake;
+                        do rivalCurrent.setCurrentHP(damageTemp);
                     }
-                }
+                } 
                 else {
-                    var Cycle cycle;
-                    let cycle = new Cycle(userTeam.playerTeamString,6 - userTeam.fainted);
-                    var choice;
-                    let choice = cycle.cycleThrough();
-                    let userCurr = choice;
+                    let playerNotFainted = 6 - playerFainted;
+                    let playerTeam = userTeam.getPlayerTeam();
+                    let chosenPokemon = Cycle.cycleThrough(playerTeam, playerFainted);
+                    do PokemonBattle.setCurrent(chosenPokemon);
                 }
-                if (rivalCurr.getCurrentHP() <= 0) {
-                    let rivalCurr = rival.chooseNextPokemon();
+                let rivalHP = rivalCurrent.getCurrentHP();
+                if (~(rivalCurr.getCurrentHP() > 0)) {
+                    let rivalCurrent = rival.chooseNextPokemon();
+                    do rival.setCurrent(rivalCurrent);
                 }
             }
         }
+        return;
     }
 
-    function void actionSelect() {
+    function String actionSelect() {
         var Array options;
-        var int numOptions;
         var String selected;
         let options = Array.new(2);
         let options[0] = "Attack";
         let options[1] = "Switch";
-        var cycle;
-        let cycle = new Cycle(options,2);
-        return cycle.cycleThrough();
+        let selected = Cycle.cycleThrough(options, 2);
+        return selected;
     }
+
+    method Pokemon getCurrent() {
+        return userCurr;
+    }
+
+    method Starter getStarter() {
+        return starter;
+    }
+
+    method void setCurrent(String new) {
+        do BetterSpriteFunctions.pokemonClear("Player");
+        do BetterSpriteFunctions.drawPlayerMon(new);
+        let userCurr = new;
+        return;
+    }
+
 }
