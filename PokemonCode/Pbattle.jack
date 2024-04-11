@@ -27,9 +27,9 @@ class Pbattle {
         let moveManager = MoveManager.new();
         let spriteFnc = BetterSpriteFunctions.new();
         let typeChart = TypeChart.new();
-        let dmgCalc = Damage.new(typeChart);
+        let dmgCalc = Damage.new();
 
-        let rival = Rival.new(typeChart,dmgCalc,cmpPokemon);
+        let rival = Rival.new(cmpPokemon);
 
         do spriteFnc.drawPlayerMon("Venusaur");
         do spriteFnc.drawRivalMon("Blastoise");
@@ -59,20 +59,20 @@ class Pbattle {
 
             if (key = 49){
                 let move = usrPokemon.getMove(1);
-                let damage = dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
+                let damage = Damage.calculateDamage(usrPokemon,move,cmpPokemon);
                 let cmpHp = usrPokemon.getCurrentHP() - damage;
                 do cmpPokemon.setCurrentHP(cmpHp);
             }
 
             if (key = 50){
                 let move = usrPokemon.getMove(1);
-                let damage = dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
+                let damage = Damage.calculateDamage(usrPokemon,move,cmpPokemon);
                 let cmpHp = cmpPokemon.getCurrentHP() - damage;
                 do cmpPokemon.setCurrentHP(cmpHp);
             }
 
-            let rMove = rival.chooseBestMove(cmpPokemon,usrPokemon);
-            let cmpDamage = dmgCalc.calculateDamage(usrPokemon,move,cmpPokemon);
+            let rMove = Rival.chooseBestMove(cmpPokemon,usrPokemon);
+            let cmpDamage = Damage.calculateDamage(usrPokemon,move,cmpPokemon);
             let usrHp = usrPokemon.getCurrentHP() - cmpDamage;
             do usrPokemon.setCurrentHP(usrHp);
 
