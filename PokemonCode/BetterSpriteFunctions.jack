@@ -1,8 +1,6 @@
 class BetterSpriteFunctions {
 
     constructor BetterSpriteFunctions new() {
-        do drawPlayerMon("Venusaur");
-        do drawRivalMon("Blastoise");
         return this;
     }
 
@@ -10,7 +8,7 @@ class BetterSpriteFunctions {
         var int location;
         var int memAddress;
         let location = 4103;
-        let memAddress = 16384+location;
+        let memAddress = 16384 + location;
 
         if (name = "Venusaur") {
             do Memory.poke(memAddress, 15296);
@@ -726,7 +724,7 @@ class BetterSpriteFunctions {
         var int location;
         var int memAddress;
         let location = 2003;
-        let memAddress = 16384+location;
+        let memAddress = 16384 + location;
 
         if (name = "Venusaur") {
             do Memory.poke(memAddress, -8192);
