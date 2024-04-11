@@ -70,7 +70,7 @@ class Pokemon {
         return moves;
     }
     // Returns a specific move from the list
-    method Move getMove(int index) {
+    method Moves getMove(int index) {
         return moves[index];
     }
 }
