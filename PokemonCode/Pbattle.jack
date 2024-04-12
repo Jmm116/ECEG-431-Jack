@@ -9,6 +9,7 @@ class Pbattle {
     field MoveManager moveManager;
     field Damage dmgCalc;
     field Rival rival;
+    field BetterSpriteFunctions sprFnc;
 
     constructor Pbattle new() {
         do Screen.clearScreen();
@@ -29,8 +30,9 @@ class Pbattle {
 
         let rival = Rival.new(cmpPokemon);
 
-        do BetterSpriteFunctions.drawPlayerMon("Venusaur");
-        do BetterSpriteFunctions.drawRivalMon("Blastoise");
+        let sprFnc = BetterSpriteFunctions.new();
+        do sprFnc.drawPlayerMon("Venusaur");
+        do sprFnc.drawRivalMon("Blastoise");
 
         return this;
     }
