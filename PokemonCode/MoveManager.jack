@@ -4,41 +4,41 @@ class MoveManager {
     constructor MoveManager new() {
         let allMoves = Array.new(18);
         // Grass
-        let allMoves[0] = Move.new("Energy Ball", "Grass", "Special");
-        let allMoves[1] = Move.new("Seed Bomb", "Grass", "Physical");
+        let allMoves[0] = Moves.new("Energy Ball", "Grass", "Special");
+        let allMoves[1] = Moves.new("Seed Bomb", "Grass", "Physical");
         // Poison
-        let allMoves[2] = Move.new("Sludge Bomb", "Poison", "Special");
-        let allMoves[3] = Move.new("Poison Jab", "Poison", "Physical");
+        let allMoves[2] = Moves.new("Sludge Bomb", "Poison", "Special");
+        let allMoves[3] = Moves.new("Poison Jab", "Poison", "Physical");
         // Water
-        let allMoves[4] = Move.new("Surf", "Water", "Special");
+        let allMoves[4] = Moves.new("Surf", "Water", "Special");
         // Psychic
-        let allMoves[5] = Move.new("Psychic", "Psychic", "Special");
+        let allMoves[5] = Moves.new("Psychic", "Psychic", "Special");
         // Fire
-        let allMoves[6] = Move.new("Flamethrower", "Fire", "Special");
-        let allMoves[7] = Move.new("Flare Blitz", "Fire", "Physical");
+        let allMoves[6] = Moves.new("Flamethrower", "Fire", "Special");
+        let allMoves[7] = Moves.new("Flare Blitz", "Fire", "Physical");
         // Ground
-        let allMoves[8] = Move.new("Earthquake", "Ground", "Physical");
+        let allMoves[8] = Moves.new("Earthquake", "Ground", "Physical");
         // Fighting
-        let allMoves[9] = Move.new("Brick Break", "Fighting", "Physical");
+        let allMoves[9] = Moves.new("Brick Break", "Fighting", "Physical");
         // Rock
-        let allMoves[10] = Move.new("Power Gem", "Rock", "Special");
-        let allMoves[11] = Move.new("Stone Edge", "Rock", "Physical");
+        let allMoves[10] = Moves.new("Power Gem", "Rock", "Special");
+        let allMoves[11] = Moves.new("Stone Edge", "Rock", "Physical");
         // Flying
-        let allMoves[12] = Move.new("Hurricane", "Flying", "Special");
-        let allMoves[13] = Move.new("Aerial Ace", "Flying", "Physical");
+        let allMoves[12] = Moves.new("Hurricane", "Flying", "Special");
+        let allMoves[13] = Moves.new("Aerial Ace", "Flying", "Physical");
         // Normal
-        let allMoves[14] = Move.new("Swift", "Normal", "Special");
-        let allMoves[15] = Move.new("Slash", "Normal", "Physical");
+        let allMoves[14] = Moves.new("Swift", "Normal", "Special");
+        let allMoves[15] = Moves.new("Slash", "Normal", "Physical");
         // Electric
-        let allMoves[16] = Move.new("Thunderbolt", "Electric", "Special");
-        let allMoves[17] = Move.new("Thunder Fang", "Electric", "Physical");
+        let allMoves[16] = Moves.new("Thunderbolt", "Electric", "Special");
+        let allMoves[17] = Moves.new("Thunder Fang", "Electric", "Physical");
         return this;
     }
     // Gets the move
     method Moves getMove(String moveName) {
         var boolean i;
         var int x;
-        var string move;
+        var String move;
         var Moves temp;
 
         let x = 0;

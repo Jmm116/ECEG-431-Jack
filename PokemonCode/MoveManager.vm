@@ -60,7 +60,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -118,7 +118,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -180,7 +180,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -242,7 +242,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -288,7 +288,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -344,7 +344,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -404,7 +404,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -464,7 +464,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -526,7 +526,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -594,7 +594,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -648,7 +648,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -706,7 +706,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -764,7 +764,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -826,7 +826,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -876,7 +876,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -928,7 +928,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -994,7 +994,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
@@ -1064,7 +1064,7 @@ push constant 97
 call String.appendChar 2
 push constant 108
 call String.appendChar 2
-call Move.new 3
+call Moves.new 3
 pop temp 0
 pop pointer 1
 push temp 0
