@@ -15,6 +15,7 @@ class Pbattle {
         let exit = false;
 
         let usrMoves = Array.new(2);
+        let moveManager = MoveManager.new();
         let usrMoves[0] = moveManager.getMove("Energy Ball");
         let usrMoves[1] = moveManager.getMove("Sludge Bomb");
         let usrPokemon = Pokemon.new("Venusaur", "Grass", "Poison", 80, 80, 82, 83, 100, 100, 80, usrMoves);
@@ -23,7 +24,6 @@ class Pbattle {
         let cmpMoves[1] = moveManager.getMove("Brick Break");
         let cmpPokemon = Pokemon.new("Blastoise", "Water", null, 79, 79, 83, 100, 85, 105, 78, cmpMoves);
 
-        let moveManager = MoveManager.new();
         let typeChart = TypeChart.new();
         let dmgCalc = Damage.new();
 
