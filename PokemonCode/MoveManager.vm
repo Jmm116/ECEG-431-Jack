@@ -1090,7 +1090,7 @@ pop pointer 1
 push that 0
 pop local 3
 push local 3
-call Pokemon.getName 1
+call Moves.getName 1
 pop local 2
 push local 2
 push argument 1

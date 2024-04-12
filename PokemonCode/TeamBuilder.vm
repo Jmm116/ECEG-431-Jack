@@ -2,8 +2,6 @@ function TeamBuilder.new 0
 push constant 4
 call Memory.alloc 1
 pop pointer 0
-push argument 0
-pop this 0
 push constant 0
 pop this 1
 push pointer 0
@@ -4540,4 +4538,9 @@ push temp 0
 pop that 0
 label IF_FALSE2
 push local 0
+return
+function TeamBuilder.fainted 0
+push argument 0
+pop pointer 0
+push this 1
 return

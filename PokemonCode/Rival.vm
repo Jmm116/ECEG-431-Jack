@@ -1,159 +1,214 @@
-function Rival.new 0
-push constant 3
+function Rival.new 1
+push constant 1
 call Memory.alloc 1
 pop pointer 0
 push argument 0
 pop this 0
-push argument 1
-pop this 1
-push argument 2
-pop this 2
+push constant 5
+call String.new 1
+push constant 82
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+call BetterSpriteFunctions.pokemonClear 1
+pop temp 0
+push this 0
+call Pokemon.getName 1
+pop local 0
+push local 0
+call BetterSpriteFunctions.drawRivalMon 1
+pop temp 0
 push pointer 0
 return
-function Rival.chooseNextPokemon 7
+function Rival.chooseNextPokemon 8
 push argument 0
 pop pointer 0
+push constant 5
+call String.new 1
+push constant 82
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+call BetterSpriteFunctions.pokemonClear 1
+pop temp 0
 push constant 0
-pop local 0
+pop local 1
 push constant 0
-pop local 2
+pop local 3
 label WHILE_EXP0
-push local 2
+push local 3
 push constant 6
 lt
 not
 if-goto WHILE_END0
-push local 2
+push local 3
 push argument 1
 add
 pop pointer 1
 push that 0
-pop local 3
-push local 3
-call int.getCurrentHP 1
 pop local 4
 push local 4
+call int.getCurrentHP 1
+pop local 5
+push local 5
 push constant 0
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push pointer 0
-push local 3
+push local 4
 push argument 2
 call Rival.evaluatePokemon 3
-pop local 1
+pop local 2
+push local 2
 push local 1
-push local 0
 gt
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push local 1
-pop local 0
-push local 3
-pop this 2
+push local 2
+pop local 1
+push local 4
+pop this 0
 label IF_FALSE1
-push this 2
+push this 0
 call Pokemon.getSpeed 1
-pop local 6
-push local 3
+pop local 7
+push local 4
 call int.getSpeed 1
-pop local 5
+pop local 6
+push local 2
 push local 1
-push local 0
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-push local 5
 push local 6
+push local 7
 gt
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-push local 3
-pop this 2
+push local 4
+pop this 0
 label IF_FALSE3
 label IF_FALSE2
 label IF_FALSE0
-push local 2
+push local 3
 push constant 1
 add
-pop local 2
+pop local 3
 goto WHILE_EXP0
 label WHILE_END0
-push this 2
+push this 0
+call Pokemon.getName 1
+pop local 0
+push local 0
+call BetterSpriteFunctions.drawRivalMon 1
+pop temp 0
+push this 0
 return
-function Rival.chooseBestMove 6
+function Rival.chooseBestMove 7
 push argument 0
 call Pokemon.getMoves 1
 pop local 0
 push constant 0
-pop local 2
+pop local 3
 push constant 0
-pop local 4
+pop local 6
 push constant 0
 not
-pop local 5
+pop local 4
 label WHILE_EXP0
-push local 5
+push local 4
 not
 if-goto WHILE_END0
-push argument 0
-push local 4
-push local 0
-add
-pop pointer 1
-push that 0
-push argument 1
-call damageCalculator.calculateDamage 3
-pop local 3
-push local 3
-push local 2
-gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push local 3
-pop local 2
-push local 4
+push local 6
 push local 0
 add
 pop pointer 1
 push that 0
 pop local 1
+push argument 0
+push local 1
+push argument 1
+call damageCalculator.calculateDamage 3
+pop local 5
+push local 5
+push local 3
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 5
+pop local 3
+push local 6
+push local 0
+add
+pop pointer 1
+push that 0
+pop local 2
 label IF_FALSE0
-push local 4
+push local 6
 push constant 1
 add
-pop local 4
-push local 4
+pop local 6
+push local 6
 push constant 2
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push constant 0
-pop local 5
+pop local 4
 label IF_FALSE1
 goto WHILE_EXP0
 label WHILE_END0
-push local 1
+push local 2
 return
-function Rival.evaluatePokemon 1
+function Rival.evaluatePokemon 4
+push argument 0
+pop pointer 0
+push argument 1
+call Pokemon.getPrimaryType 1
+pop local 0
+push argument 2
+call Pokemon.getPrimaryType 1
+pop local 1
+push argument 2
+call Pokemon.getSecondaryType 1
+pop local 2
+push local 0
+push local 1
+push local 2
+call TypeChart.getTypeEffectiveness 3
+pop local 3
+push local 3
+push constant 100
+call Math.divide 2
+return
+function Rival.getCurrent 0
 push argument 0
 pop pointer 0
 push this 0
+return
+function Rival.setCurrent 0
+push argument 0
+pop pointer 0
 push argument 1
-call Pokemon.getPrimaryType 1
-push argument 2
-call Pokemon.getPrimaryType 1
-push argument 2
-call Pokemon.getSecondaryType 1
-call TypeChart.getTypeEffectiveness 4
-pop local 0
-push local 0
-push constant 100
-call Math.divide 2
+pop this 0
+push constant 0
 return

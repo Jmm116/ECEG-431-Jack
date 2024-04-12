@@ -1,0 +1,471 @@
+function PokemonBattle.new 3
+push constant 14
+call Memory.alloc 1
+pop pointer 0
+call Screen.clearScreen 0
+pop temp 0
+call Starter.new 0
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+pop this 3
+push constant 0
+pop this 4
+call TypeChart.new 0
+pop this 5
+call Damage.new 0
+pop this 9
+call MoveManager.new 0
+pop this 8
+call SpriteFunctions.new 0
+pop this 11
+call SpriteManager.new 0
+pop this 12
+call TeamBuilder.new 0
+pop this 6
+call TeamBuilder.new 0
+pop this 7
+push this 1
+call Starter.getStarter 1
+pop local 2
+push this 6
+push local 2
+call TeamBuilder.createPlayerTeam 2
+pop local 0
+push constant 0
+push local 0
+add
+pop pointer 1
+push that 0
+pop this 13
+push this 7
+push local 2
+call TeamBuilder.createRivalTeam 2
+pop local 1
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Rival.new 1
+pop this 10
+push pointer 0
+return
+function PokemonBattle.battle 17
+call PokemonBattle.getStarter 0
+pop local 0
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+push argument 0
+call TeamBuilder.fainted 1
+pop local 1
+push local 1
+push constant 6
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push argument 1
+call TeamBuilder.fainted 1
+pop local 2
+push local 2
+push constant 6
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+call PokemonBattle.actionSelect 0
+pop local 4
+push local 4
+push constant 6
+call String.new 1
+push constant 65
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+call PokemonBattle.getCurrent 0
+pop local 6
+push local 6
+call Pokemon.getMoves 1
+pop local 9
+push local 9
+push constant 2
+call Cycle.cycleThrough 2
+pop local 10
+label IF_FALSE2
+push local 4
+push constant 6
+call String.new 1
+push constant 83
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 6
+push local 1
+sub
+pop local 3
+push argument 0
+call TeamBuilder.playerTeamString 1
+pop local 8
+push local 8
+push local 1
+call Cycle.cycleThrough 2
+pop local 11
+push local 11
+call PokemonBattle.setCurrent 1
+pop temp 0
+label IF_FALSE3
+call PokemonBattle.getCurrent 0
+pop local 6
+push local 6
+call Pokemon.getSpeed 1
+pop local 12
+push argument 2
+call Rival.getCurrent 1
+pop local 7
+push local 7
+call Pokemon.getSpeed 1
+pop local 13
+push local 12
+push local 13
+lt
+not
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 4
+push constant 6
+call String.new 1
+push constant 65
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 6
+push local 10
+push local 7
+call Damage.calculateDamage 3
+pop local 5
+push local 7
+call Pokemon.getCurrentHP 1
+pop local 15
+push local 15
+push local 5
+sub
+pop local 14
+push local 7
+push local 14
+call Pokemon.setCurrentHP 2
+pop temp 0
+label IF_FALSE5
+push local 7
+call Pokemon.getCurrentHP 1
+pop local 15
+push local 15
+push constant 0
+gt
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push argument 2
+call Rival.chooseBestMove 1
+pop local 10
+push local 7
+push local 10
+push local 6
+call Damage.calculateDamage 3
+pop local 5
+push local 6
+call Pokemon.getCurrentHP 1
+pop local 16
+push local 16
+push local 5
+sub
+pop local 14
+push local 6
+push local 14
+call Pokemon.setCurrentHP 2
+pop temp 0
+goto IF_END6
+label IF_FALSE6
+push argument 2
+call Rival.chooseNextPokemon 1
+pop local 7
+push argument 2
+push local 7
+call Rival.setCurrent 2
+pop temp 0
+label IF_END6
+push local 6
+call Pokemon.getCurrentHP 1
+pop local 16
+push local 16
+push constant 0
+gt
+not
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 6
+push local 1
+sub
+pop local 3
+push argument 0
+call TeamBuilder.playerTeamString 1
+pop local 8
+push local 8
+push local 1
+call Cycle.cycleThrough 2
+pop local 11
+push local 11
+call PokemonBattle.setCurrent 1
+pop temp 0
+label IF_FALSE7
+label IF_FALSE4
+push local 12
+push local 13
+lt
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push argument 2
+push local 7
+push local 6
+call Rival.chooseBestMove 3
+pop local 10
+push local 7
+push local 10
+push local 6
+call damage.calculateDamage 3
+pop local 5
+push local 6
+call Pokemon.getCurrentHP 1
+pop local 16
+push local 16
+push local 5
+sub
+pop local 14
+push local 6
+push local 14
+call Pokemon.setCurrentHP 2
+pop temp 0
+push local 6
+call Pokemon.getCurrentHP 1
+pop local 16
+push local 16
+push constant 0
+gt
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push local 4
+push constant 6
+call String.new 1
+push constant 65
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push local 6
+push local 10
+push local 7
+call Damage.calculateDamage 3
+pop local 5
+push local 7
+call Pokemon.getCurrentHP 1
+pop local 15
+push local 15
+push local 5
+sub
+pop local 14
+push local 7
+push local 14
+call Pokemon.setCurrentHP 2
+pop temp 0
+label IF_FALSE10
+goto IF_END9
+label IF_FALSE9
+push constant 6
+push local 1
+sub
+pop local 3
+push argument 0
+call TeamBuilder.getPlayerTeam 1
+pop local 8
+push local 8
+push local 1
+call Cycle.cycleThrough 2
+pop local 11
+push local 11
+call PokemonBattle.setCurrent 1
+pop temp 0
+label IF_END9
+push local 7
+call Pokemon.getCurrentHP 1
+pop local 15
+call rivalCurr.getCurrentHP 0
+push constant 0
+gt
+not
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push argument 2
+call Rival.chooseNextPokemon 1
+pop local 7
+push argument 2
+push local 7
+call Rival.setCurrent 2
+pop temp 0
+label IF_FALSE11
+label IF_FALSE8
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function PokemonBattle.actionSelect 2
+push constant 2
+call Array.new 1
+pop local 0
+push constant 0
+push local 0
+add
+push constant 6
+call String.new 1
+push constant 65
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 0
+add
+push constant 6
+call String.new 1
+push constant 83
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 2
+call Cycle.cycleThrough 2
+pop local 1
+push local 1
+return
+function PokemonBattle.getCurrent 0
+push argument 0
+pop pointer 0
+push this 13
+return
+function PokemonBattle.getStarter 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function PokemonBattle.setCurrent 0
+push argument 0
+pop pointer 0
+push constant 6
+call String.new 1
+push constant 80
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+call BetterSpriteFunctions.pokemonClear 1
+pop temp 0
+push argument 1
+call BetterSpriteFunctions.drawPlayerMon 1
+pop temp 0
+push argument 1
+pop this 13
+push constant 0
+return

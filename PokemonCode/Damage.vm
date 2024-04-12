@@ -1,20 +1,28 @@
 function Damage.new 0
-push constant 2
+push constant 0
 call Memory.alloc 1
 pop pointer 0
-push constant 0
-pop this 1
-push this 0
-call TypeChart.new 1
-pop argument 0
 push pointer 0
 return
-function Damage.calculateDamage 4
+function Damage.calculateDamage 10
+push argument 1
+call Move.getType 1
+pop local 5
 push argument 0
-pop pointer 0
-push constant 100
-pop local 2
+call Pokemon.getPrimaryType 1
+pop local 6
+push argument 0
+call Pokemon.getSecondaryType 1
+pop local 7
 push argument 2
+call Pokemon.getPrimaryType 1
+pop local 8
+push argument 2
+call Pokemon.getSecondaryType 1
+pop local 9
+push constant 100
+pop local 3
+push argument 1
 call Move.getCat 1
 push constant 8
 call String.new 1
@@ -38,74 +46,72 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push argument 1
+push argument 0
 call Pokemon.getAttack 1
 push constant 100
 call Math.multiply 2
-pop local 0
-push argument 3
-call Pokemon.getDefense 1
 pop local 1
+push argument 2
+call Pokemon.getDefense 1
+pop local 2
 goto IF_END0
 label IF_FALSE0
-push argument 1
+push argument 0
 call Pokemon.getSpAttack 1
 push constant 100
 call Math.multiply 2
-pop local 0
-push argument 3
-call Pokemon.getSpDefense 1
 pop local 1
+push argument 2
+call Pokemon.getSpDefense 1
+pop local 2
 label IF_END0
-push argument 2
-call Move.getType 1
-push argument 1
-call Pokemon.getPrimaryType 1
+push local 5
+push local 6
 eq
-push argument 2
-call Move.getType 1
+push local 5
 or
-push argument 1
-call Pokemon.getSecondaryType 1
+push local 7
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push constant 150
-pop local 2
-label IF_FALSE1
-push argument 2
-call Move.getType 1
-push argument 3
-call Pokemon.getPrimaryType 1
-push argument 3
-call Pokemon.getSecondaryType 1
-call chart.getTypeEffectiveness 3
 pop local 3
+label IF_FALSE1
+push local 5
+push local 8
+push local 9
+call TypeChart.getTypeEffectiveness 3
+pop local 4
 push constant 3360
-push local 0
-call Math.multiply 2
 push local 1
+call Math.multiply 2
+push local 2
 call Math.divide 2
 push constant 50
 call Math.divide 2
 push constant 2
 add
-push local 2
-call Math.multiply 2
 push local 3
+call Math.multiply 2
+push local 4
 call Math.multiply 2
 push constant 10000
 call Math.divide 2
-pop this 1
-push this 1
+pop local 0
+push local 0
 return
-function Damage.applyDamage 0
+function Damage.applyDamage 2
 push argument 0
+call Pokemon.getCurrentHP 1
+pop local 0
 push argument 0
 call Pokemon.getCurrentHP 1
 push argument 1
 sub
+pop local 1
+push argument 0
+push local 1
 call Pokemon.setCurrentHP 2
 pop temp 0
 push constant 0

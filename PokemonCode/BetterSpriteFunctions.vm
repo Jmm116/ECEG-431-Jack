@@ -3,61 +3,15 @@ push constant 0
 call Memory.alloc 1
 pop pointer 0
 push pointer 0
-push constant 8
-call String.new 1
-push constant 86
-call String.appendChar 2
-push constant 101
-call String.appendChar 2
-push constant 110
-call String.appendChar 2
-push constant 117
-call String.appendChar 2
-push constant 115
-call String.appendChar 2
-push constant 97
-call String.appendChar 2
-push constant 117
-call String.appendChar 2
-push constant 114
-call String.appendChar 2
-call BetterSpriteFunctions.drawPlayerMon 2
-pop temp 0
-push pointer 0
-push constant 9
-call String.new 1
-push constant 66
-call String.appendChar 2
-push constant 108
-call String.appendChar 2
-push constant 97
-call String.appendChar 2
-push constant 115
-call String.appendChar 2
-push constant 116
-call String.appendChar 2
-push constant 111
-call String.appendChar 2
-push constant 105
-call String.appendChar 2
-push constant 115
-call String.appendChar 2
-push constant 101
-call String.appendChar 2
-call BetterSpriteFunctions.drawRivalMon 2
-pop temp 0
-push pointer 0
 return
 function BetterSpriteFunctions.drawPlayerMon 2
-push argument 0
-pop pointer 0
 push constant 4103
 pop local 0
 push constant 16384
 push local 0
 add
 pop local 1
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 86
@@ -332,7 +286,7 @@ push constant 63
 call Memory.poke 2
 pop temp 0
 label IF_FALSE0
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 71
@@ -568,7 +522,7 @@ push constant 12
 call Memory.poke 2
 pop temp 0
 label IF_FALSE1
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 70
@@ -836,7 +790,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE2
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 77
@@ -1119,7 +1073,7 @@ push constant 15
 call Memory.poke 2
 pop temp 0
 label IF_FALSE3
-push argument 1
+push argument 0
 push constant 4
 call String.new 1
 push constant 74
@@ -1313,7 +1267,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE4
-push argument 1
+push argument 0
 push constant 6
 call String.new 1
 push constant 70
@@ -1561,7 +1515,7 @@ push constant 12288
 call Memory.poke 2
 pop temp 0
 label IF_FALSE5
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 67
@@ -1823,7 +1777,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE6
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 86
@@ -2090,7 +2044,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE7
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 83
@@ -2354,7 +2308,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE8
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 65
@@ -2641,7 +2595,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE9
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 80
@@ -2865,7 +2819,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE10
-push argument 1
+push argument 0
 push constant 10
 call String.new 1
 push constant 86
@@ -3120,7 +3074,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE11
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 66
@@ -3379,7 +3333,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE12
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 65
@@ -3710,7 +3664,7 @@ push constant 7
 call Memory.poke 2
 pop temp 0
 label IF_FALSE13
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 69
@@ -3916,7 +3870,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE14
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 78
@@ -4186,7 +4140,7 @@ push constant 31
 call Memory.poke 2
 pop temp 0
 label IF_FALSE15
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 74
@@ -4445,7 +4399,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE16
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 80
@@ -4703,15 +4657,13 @@ label IF_FALSE17
 push constant 0
 return
 function BetterSpriteFunctions.drawRivalMon 2
-push argument 0
-pop pointer 0
 push constant 2003
 pop local 0
 push constant 16384
 push local 0
 add
 pop local 1
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 86
@@ -5002,7 +4954,7 @@ push constant 7
 call Memory.poke 2
 pop temp 0
 label IF_FALSE0
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 71
@@ -5238,7 +5190,7 @@ push constant 20
 call Memory.poke 2
 pop temp 0
 label IF_FALSE1
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 70
@@ -5474,7 +5426,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE2
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 77
@@ -5754,7 +5706,7 @@ push constant 31
 call Memory.poke 2
 pop temp 0
 label IF_FALSE3
-push argument 1
+push argument 0
 push constant 4
 call String.new 1
 push constant 74
@@ -5994,7 +5946,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE4
-push argument 1
+push argument 0
 push constant 6
 call String.new 1
 push constant 70
@@ -6249,7 +6201,7 @@ push constant 48
 call Memory.poke 2
 pop temp 0
 label IF_FALSE5
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 67
@@ -6514,7 +6466,7 @@ push constant 240
 call Memory.poke 2
 pop temp 0
 label IF_FALSE6
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 86
@@ -6770,7 +6722,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE7
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 83
@@ -7042,7 +6994,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE8
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 65
@@ -7313,7 +7265,7 @@ push constant 120
 call Memory.poke 2
 pop temp 0
 label IF_FALSE9
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 80
@@ -7554,7 +7506,7 @@ push constant 6
 call Memory.poke 2
 pop temp 0
 label IF_FALSE10
-push argument 1
+push argument 0
 push constant 10
 call String.new 1
 push constant 86
@@ -7799,7 +7751,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE11
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 66
@@ -8071,7 +8023,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE12
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 65
@@ -8390,7 +8342,7 @@ push constant 14
 call Memory.poke 2
 pop temp 0
 label IF_FALSE13
-push argument 1
+push argument 0
 push constant 9
 call String.new 1
 push constant 69
@@ -8597,7 +8549,7 @@ push constant 1
 call Memory.poke 2
 pop temp 0
 label IF_FALSE14
-push argument 1
+push argument 0
 push constant 8
 call String.new 1
 push constant 78
@@ -8871,7 +8823,7 @@ push constant 28
 call Memory.poke 2
 pop temp 0
 label IF_FALSE15
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 74
@@ -9105,7 +9057,7 @@ push constant 3
 call Memory.poke 2
 pop temp 0
 label IF_FALSE16
-push argument 1
+push argument 0
 push constant 7
 call String.new 1
 push constant 80
