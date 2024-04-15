@@ -229,10 +229,6 @@ push constant 78
 push this 3
 call Pokemon.new 11
 pop this 2
-call TypeChart.new 0
-pop this 5
-call Damage.new 0
-pop this 7
 push this 2
 call Rival.new 1
 pop this 8

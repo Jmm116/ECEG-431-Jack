@@ -24,9 +24,6 @@ class Pbattle {
         let cmpMoves[1] = moveManager.getMove("Brick Break");
         let cmpPokemon = Pokemon.new("Blastoise", "Water", null, 79, 79, 83, 100, 85, 105, 78, cmpMoves);
 
-        let typeChart = TypeChart.new();
-        let dmgCalc = Damage.new();
-
         let rival = Rival.new(cmpPokemon);
 
         do BetterSpriteFunctions.drawPlayerMon("Venusaur");
