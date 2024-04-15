@@ -5,8 +5,9 @@ class Main {
     function void main() {
         var Pbattle battle;
         do Pbattle.newInstance();
+        let battle = Pbattle.getInstance();
         do battle.run();
-        do game.dispose();
+        do battle.dispose();
         return;
     }
 }

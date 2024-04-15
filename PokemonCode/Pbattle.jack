@@ -37,6 +37,16 @@ class Pbattle {
         return;
     }
 
+    function Pbattle getInstance() {
+        return instance;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        do Screen.clearScreen();
+        return;
+    }
+
     method void run(){
         var char key;
         var String move;
@@ -46,6 +56,9 @@ class Pbattle {
         var int cmpDamage;
         var int usrHp;
 
+        let cmpHp = 100;
+        let usrHp = 100;
+
         while(~exit){
             while ((key = 0) & (~exit)) {
                 let key = Keyboard.keyPressed();
@@ -54,21 +67,21 @@ class Pbattle {
 
             if (key = 49){
                 let move = usrPokemon.getMove(1);
-                let damage = Damage.calculateDamage(usrPokemon,move,cmpPokemon);
-                let cmpHp = usrPokemon.getCurrentHP() - damage;
+                let damage = 10; //Damage.calculateDamage(usrPokemon,move,cmpPokemon);
+                let cmpHp = cmpHp - 10;//usrPokemon.getCurrentHP() - damage;
                 do cmpPokemon.setCurrentHP(cmpHp);
             }
 
             if (key = 50){
                 let move = usrPokemon.getMove(1);
-                let damage = Damage.calculateDamage(usrPokemon,move,cmpPokemon);
-                let cmpHp = cmpPokemon.getCurrentHP() - damage;
+                let damage = 10; //Damage.calculateDamage(usrPokemon,move,cmpPokemon);
+                let cmpHp = cmpHp - 10;//cmpPokemon.getCurrentHP() - damage;
                 do cmpPokemon.setCurrentHP(cmpHp);
             }
 
-            let rMove = Rival.chooseBestMove(cmpPokemon,usrPokemon);
-            let cmpDamage = Damage.calculateDamage(usrPokemon,move,cmpPokemon);
-            let usrHp = usrPokemon.getCurrentHP() - cmpDamage;
+            //let rMove = Rival.chooseBestMove(cmpPokemon,usrPokemon);
+            let cmpDamage = 10; //Damage.calculateDamage(usrPokemon,move,cmpPokemon);
+            let usrHp = usrHp-10;//usrPokemon.getCurrentHP() - cmpDamage;
             do usrPokemon.setCurrentHP(usrHp);
 
             if (usrHp = 0) {

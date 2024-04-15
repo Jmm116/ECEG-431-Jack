@@ -3,7 +3,7 @@ class Damage {
         return this;
     }
 
-    function int calculateDamage(Pokemon attacker, Move move, Pokemon defender) {
+    function int calculateDamage(Pokemon attacker, Moves move, Pokemon defender) {
         var int damage;
         var int attackStat;
         var int defenseStat;

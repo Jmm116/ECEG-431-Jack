@@ -6,7 +6,7 @@ push pointer 0
 return
 function Damage.calculateDamage 10
 push argument 1
-call Move.getType 1
+call Moves.getType 1
 pop local 5
 push argument 0
 call Pokemon.getPrimaryType 1
@@ -23,7 +23,7 @@ pop local 9
 push constant 100
 pop local 3
 push argument 1
-call Move.getCat 1
+call Moves.getCat 1
 push constant 8
 call String.new 1
 push constant 80
